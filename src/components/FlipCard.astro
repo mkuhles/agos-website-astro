@@ -1,0 +1,16 @@
+---
+let { className } = Astro.props
+---
+
+<div class={ className + ' flip-card'}>
+    <div class='flip-card-inner'>
+        <div class="flip-card-front">
+            <slot name="front" />
+        </div>
+        <div class="flip-card-back">
+            <div class="flip-card-back-inner">
+                <slot name="back" />
+            </div>
+        </div>
+    </div>
+</div>

@@ -13,7 +13,7 @@ export default function arrangeCircleElements(globalAngle, globalRadius, globalO
     }
 
     elements.forEach((element, index) => {
-        const angle = index * angleStep + globalAngle; // Calculate the angle for each element
+        const angle = index * angleStep + globalAngle - Math.PI / 2; // Calculate the angle for each element
         const x = centerX + radius * Math.cos(angle) - element.offsetWidth / 2;
         const y = centerY + radius * Math.sin(angle) - element.offsetHeight / 2;
         element.style.left = `${x}px`;

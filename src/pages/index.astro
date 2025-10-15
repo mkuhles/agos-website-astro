@@ -6,6 +6,7 @@ import DojoCircle from "../components/DojoCircle.astro";
 import DojoSection from "../components/DojoSection.astro";
 import { getCollection } from 'astro:content';
 import Section from "../components/Section.astro";
+import FlipCard from "../components/FlipCard.astro";
 
 const pageTitle = "AGOS - Aikido Gemeinschaft Oder-Spree";
 const logo = "/assets/agos.png";
@@ -22,9 +23,12 @@ const dojos = await getCollection('dojos');
       </div>
       <div class="flex-center">
         <div id="circle-container" class="circle-container">
-          <div class="center-element circle">
-            <a href="#agos"><img src={logo} alt={pageTitle} /></a>
-          </div>
+          <FlipCard className="center-element">
+            <div slot="front"><img src={logo} alt={pageTitle} /></div>
+            <div slot="back">
+                <a class="btn" href="#agos">Erfahre mehr</a>
+            </div>
+          </FlipCard> 
           {dojos.map( (dojo: any) => <DojoCircle key={dojo.id} dojo={dojo} /> )}
         </div>
       </div>

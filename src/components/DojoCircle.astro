@@ -1,32 +1,26 @@
 ---
+import FlipCard from "./FlipCard.astro";
 import SocialIcons from "./SocialIcons.astro";
 
 const dojo = Astro.props.dojo.data;
 ---
+<FlipCard className="circle-element circle">
+  <div slot="front">
+    {dojo.logo
+        ? <img slot="front" src={dojo.logo} alt={"Dojo " + dojo.name} />
+        : <div slot="front" class="circle-title">{dojo.name}</div>
+    }
+  </div>
 
-<div class="circle-element circle flip-card">
-    <div class='flip-card-inner'>
-        <div class="flip-card-front">
-            {dojo.logo ? (
-                <img src={dojo.logo} alt={"Dojo " + dojo.name} />
-            ) : (
-                <div class="circle-title">{dojo.name}</div>
-            )}
-        </div>
-        <div class="flip-card-back">
-            <div class="flip-card-back-inner">
-                <div class="title">{dojo.name}</div>
-                 <div class="address">{dojo.address}</div>                
-                <SocialIcons icons={{
-                    facebook: dojo.facebook,
-                    gmaps: dojo.gmaps,
-                    dojoName: dojo.name
-                }} />
-
-                <a class="btn" href={"#" + dojo.id}>{"Erfahre mehr"}</a>
-            </div>
-        </div>
-    </div>
-</div>
-
+  <div slot="back">
+    <div class="title">{dojo.name}</div>
+    <div class="address">{dojo.address}</div>
+    <SocialIcons icons={{
+      facebook: dojo.facebook,
+      gmaps: dojo.gmaps,
+      dojoName: dojo.name
+    }} />
+    <a class="btn" href={"#" + dojo.id}>Erfahre mehr</a>
+  </div>
+</FlipCard>
 

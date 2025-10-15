@@ -1,7 +1,7 @@
 .viewport-one {
   background-position: center;
-  background-image: url('../assets/stones.png');
-  background-size: 40vmin;
+  background-image: url('../assets/dojo_tile.svg');
+  background-size: contain;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,6 +10,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    // background-image: url('../assets/aikidoka.png');
+    // background-size: contain;
+    // background-repeat: no-repeat;
+    // background-position: center;
   }
 
   h1 {
@@ -48,11 +53,19 @@
 }
 
 .center-element {
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-weight: bold;
   z-index: 100;
+
+  .flip-card-front, .flip-card-back {
+    box-shadow: none;
+  }
+  .flip-card-front {
+    background-color: transparent;
+  }
 }
 
 .circle-element {
