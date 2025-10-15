@@ -1,16 +1,51 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Footer from "../components/Footer.astro";
+import {Content as SEO} from '../data/SEO.md'
+import DojoCircle from "../components/DojoCircle.astro";
+import DojoSection from "../components/DojoSection.astro";
+import { getCollection } from 'astro:content';
+import Section from "../components/Section.astro";
+
+const pageTitle = "AGOS - Aikido Gemeinschaft Oder-Spree";
+const logo = "/assets/agos.png";
+const dojos = await getCollection('dojos');
 
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout pageTitle="Home">
+	<div id="top"></div>
+  <section class="viewport-one">
+    <div>
+      <div class="header">
+        <h1>{pageTitle}</h1>
+      </div>
+      <div class="flex-center">
+        <div id="circle-container" class="circle-container">
+          <div class="center-element circle">
+            <a href="#agos"><img src={logo} alt={pageTitle} /></a>
+          </div>
+          {dojos.map( (dojo: any) => <DojoCircle key={dojo.id} dojo={dojo} /> )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {dojos.map( (dojo: any) => {
+    console.log(dojo.body);
+    
+    return <DojoSection key={dojo.id} dojo={dojo} />
+  })}
+
+  <Section class="seo-section">
+    <SEO />
+  </Section>
+  <Footer />
+  <div class="up"><a class="btn" href="#top" title="Zurück zum Start">hoch</a></div>
+
+</BaseLayout>
+
+<script>
+  import useCircleAnimation from "../scripts/useCircleAnimation";
+  {useCircleAnimation()}
+</script>

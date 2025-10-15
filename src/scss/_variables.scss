@@ -1,0 +1,18 @@
+:root {
+  --section-padding: 10vmin;
+  --circle-diameter: 80vmin;
+  --circle-element-diameter: 24vmin;
+  --circle-element-max-diameter: 400px;
+  --social-media-icon-size: 3vmin;
+
+  --dark-green: #1a3524;
+  --light-green: #243f2c;
+
+  --beige-first: #ddcca4;
+  --beige-second: #d4c193;
+
+  --background-primary: var(--beige-first);
+  --background-secondary: var(--beige-second);
+  --border-color: var(--dark-green);
+  --heighlight-color: var(--light-green);
+}

@@ -1,0 +1,27 @@
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  margin-bottom: 1vmin;
+}
+
+.social-icon {
+  padding: 1.5vmin 1vmin;
+ 
+  i {
+  display: block;
+  width: var(--social-media-icon-size);
+  height: var(--social-media-icon-size);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  
+  &.facebook {
+    background-image: url('/assets/facebook.png');
+  }
+  &.gmaps {
+    background-image: url('/assets/google-maps.png');
+  }
+ }
+}

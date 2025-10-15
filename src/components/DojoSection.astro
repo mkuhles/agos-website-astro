@@ -1,0 +1,21 @@
+---
+import Section from './Section.astro';
+
+const dojo = Astro.props.dojo.data;
+const { Content } = await Astro.props.dojo.render();
+
+---
+
+<Section class="dojo-section" id={dojo.id}>
+    <h2 class="section-title">{dojo.name}</h2>
+    <div class="dojo-logo">
+    {dojo.logo ? (
+        <img src={dojo.logo} alt={"Dojo " + dojo.name} />
+    ) : (
+        <div class="placeholder">Logo fehlt</div>
+    )}
+    </div>
+    <div class="dojo-description">
+        <Content />
+    </div>
+</Section>

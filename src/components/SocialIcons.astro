@@ -1,0 +1,16 @@
+---
+const icons = Astro.props.icons;
+---
+
+<div class="social-icons">
+    {icons.facebook ? (
+        <a href={icons.facebook} target="_blank" class="social-icon" title={"Facebook Seite des Dojos " + icons.dojoName}>
+            <i class="facebook"></i>
+        </a>
+    ) : null}
+    {icons.gmaps ? (
+        <a href={icons.gmaps} target="_blank" class="social-icon"  title={"Google Maps Seite des Dojos " + icons.dojoName}>
+            <i class="gmaps"></i>
+        </a>
+    ) : null}
+</div>
