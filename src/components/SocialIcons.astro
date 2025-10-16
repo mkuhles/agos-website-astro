@@ -1,15 +1,18 @@
 ---
 const icons = Astro.props.icons;
+if(!icons.title) {
+    icons.title = "Dojos " + icons.dojoName;
+}
 ---
 
 <div class="social-icons">
     {icons.facebook ? (
-        <a href={icons.facebook} target="_blank" class="social-icon" title={"Facebook Seite des Dojos " + icons.dojoName}>
+        <a href={icons.facebook} target="_blank" class="social-icon" title={"Facebook Seite des " + icons.title}>
             <i class="facebook"></i>
         </a>
     ) : null}
     {icons.gmaps ? (
-        <a href={icons.gmaps} target="_blank" class="social-icon"  title={"Google Maps Seite des Dojos " + icons.dojoName}>
+        <a href={icons.gmaps} target="_blank" class="social-icon"  title={"Google Maps Seite des " + icons.title}>
             <i class="gmaps"></i>
         </a>
     ) : null}

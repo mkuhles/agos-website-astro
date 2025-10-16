@@ -18,7 +18,7 @@
   }
 
   h1 {
-    text-shadow: 0 0 10px var(--background-primary);
+    text-shadow: 0 0 2px white;
   }
 }
 
@@ -54,6 +54,10 @@
 
 .center-element {
   position: absolute;
+  width: var(--center-element-diameter);
+  height: var(--center-element-diameter);
+  max-width: var(--center-element-max-diameter);
+  max-height: var(--center-element-max-diameter);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -65,6 +69,12 @@
   }
   .flip-card-front {
     background-color: transparent;
+    transition: opacity 0.6s ease-in-out;
+
+    
+  }
+  &:hover .flip-card-front {
+    opacity: 0;
   }
 }
 

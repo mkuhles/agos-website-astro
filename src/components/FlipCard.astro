@@ -8,9 +8,7 @@ let { className } = Astro.props
             <slot name="front" />
         </div>
         <div class="flip-card-back">
-            <div class="flip-card-back-inner">
-                <slot name="back" />
-            </div>
+            <slot name="back" />
         </div>
     </div>
 </div>
