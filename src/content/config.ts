@@ -12,4 +12,15 @@ const dojos = defineCollection({
   }),
 });
 
-export const collections = { dojos };
+const agos = defineCollection({
+  type: 'content', // Markdown/MDX
+  schema: z.object({
+    id: z.string(),
+    name: z.string(),
+    facebook: z.string().optional(),
+    // gmaps: z.string().optional(),
+    logo: z.string(),
+  }),
+});
+
+export const collections = { dojos, agos };
