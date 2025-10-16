@@ -23,14 +23,14 @@ section {
 
 /* .dojo-section */
 .section--content {
-  .dojo-logo {
-    width: 25vmin;
+  .section__image {
     max-width: var(--circle-element-max-diameter);
     margin: 5vmin auto;
     
     @media screen and (min-width: 600px) {
-        margin: 0 5vmin 5vmin 0;
-        float: left;
+        width: 40%;
+        margin: 0 0 5vmin 5vmin;
+        float: right;
     }
   }
 

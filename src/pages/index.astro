@@ -17,9 +17,9 @@ if(!agos) {
 <BaseLayout pageTitle={agos.data.name}>
 	<div id="top"></div>
   <SectionFirst agos={agos} dojos={dojos} />
-  <SectionContent id="agos" class="about-section" dojo={agos} />
+  <SectionContent id="agos" class="about-section" content={agos} />
 
-  {dojos.map( (dojo: any) =>  <SectionContent key={dojo.id} dojo={dojo} /> )}
+  {dojos.map( (dojo: any) =>  <SectionContent key={dojo.id} content={dojo} /> )}
 
   <SectionSEO />
   <Footer />

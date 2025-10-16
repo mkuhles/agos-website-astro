@@ -9,6 +9,7 @@ const dojos = defineCollection({
     facebook: z.string().optional(),
     gmaps: z.string().optional(),
     logo: z.string(),
+    image: z.string().optional(),
   }),
 });
 

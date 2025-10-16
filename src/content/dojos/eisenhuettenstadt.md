@@ -5,5 +5,6 @@ location: "Eisenhüttenstadt"
 facebook: ""
 gmaps: ""
 logo: "/assets/logo-eisenhuettenstadt.png"
+image: "/assets/dojo-eisenhuettenstadt.jpg"
 ---
     
