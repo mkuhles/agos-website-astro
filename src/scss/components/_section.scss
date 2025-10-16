@@ -9,12 +9,6 @@ h2:first-child {
     }
 }
 
-.up {
-  position: fixed;
-  bottom: calc(var(--section-padding) / 2);
-  right: var(--section-padding);
-}
-
 /* .dojo-section */
 .dojo-section{
   .dojo-logo {
