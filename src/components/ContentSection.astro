@@ -3,10 +3,10 @@ import Section from './Section.astro';
 
 const dojo = Astro.props.dojo.data;
 const { Content } = await Astro.props.dojo.render();
-
+const type = Astro.props.type || "content";
 ---
 
-<Section class="dojo-section" id={dojo.id}>
+<Section id={dojo.id} type={type}>
     <h2 class="section-title">{dojo.name}</h2>
     <div class="dojo-logo">
     {dojo.logo ? (

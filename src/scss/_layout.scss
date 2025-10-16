@@ -18,18 +18,6 @@ section, footer {
 
 }
 
-section {
-  margin: 0;
-  padding: calc(var(--section-padding) / 2) var(--section-padding) var(--section-padding) var(--section-padding);
-  position: relative;
-  box-sizing: border-box;
-  border-bottom: 1px solid var(--border-color);
-
-  @media screen and (min-width: 600px) {
-      min-height: 100vh;
-  }
-}
-
 footer {
   padding: calc(var(--section-padding) / 2) var(--section-padding);
 }

@@ -1,9 +1,10 @@
 ---
-const { className = '', id = '' } = Astro.props;
+const { type = '', id = '' } = Astro.props;
+const className = `section section--${type}` + (Astro.props.className ? ` ${Astro.props.className}` : '');
 ---
 
 <section class={className} id={id}>
-    <div class="section-content">
+    <div class="section__content">
         <slot />
     </div>
 </section>

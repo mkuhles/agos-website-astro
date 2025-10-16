@@ -1,4 +1,4 @@
-.viewport-one {
+.section--first {
   background-position: center;
   background-image: url('../assets/dojo_tile.svg');
   background-size: contain;
@@ -19,6 +19,7 @@
 
   h1 {
     text-shadow: 0 0 2px white;
+    color: var(--black);
   }
 }
 
@@ -27,7 +28,6 @@
   width: var(--circle-diameter);
   height: var(--circle-diameter);
   border-radius: 50%;
-  /* border: 1px solid #ccc; */
 }
 
 .circle {

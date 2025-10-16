@@ -2,7 +2,19 @@ h2:first-child {
   margin-top: 0;
 }
 
-.section-content {
+section {
+  margin: 0;
+  padding: calc(var(--section-padding) / 2) var(--section-padding) var(--section-padding) var(--section-padding);
+  position: relative;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--border-color);
+
+  @media screen and (min-width: 600px) {
+      min-height: 100vh;
+  }
+}
+
+.section__content {
     @media screen and (min-width: 1000px) {
         max-width: 1000px;
         margin: 0 auto;
@@ -10,7 +22,7 @@ h2:first-child {
 }
 
 /* .dojo-section */
-.dojo-section{
+.section--content {
   .dojo-logo {
     width: 25vmin;
     max-width: var(--circle-element-max-diameter);
@@ -27,4 +39,4 @@ h2:first-child {
     display: block;
     clear: both;
   } 
-}
+}  

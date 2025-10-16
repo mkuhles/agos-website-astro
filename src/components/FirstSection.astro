@@ -1,18 +1,19 @@
 ---
 import FlipElement from "./FlipElement.astro";
+import Section from "./Section.astro";
 
 const {agos, dojos} = Astro.props;
+
+//todo use Section component here as well
 ---
-<section class="viewport-one">
-    <div>
-      <div class="header">
+<Section type="first">
+    <div class="header">
         <h1>{agos.data.name}</h1>
-      </div>
-      <div class="flex-center">
-        <div id="circle-container" class="circle-container">
-          <FlipElement dojo={agos} className="center-element" />
-          {dojos.map( (dojo: any) => <FlipElement key={dojo.id} dojo={dojo} /> )}
-        </div>
-      </div>
     </div>
-  </section>
+    <div class="flex-center">
+        <div id="circle-container" class="circle-container">
+            <FlipElement dojo={agos} className="center-element" />
+            {dojos.map( (dojo: any) => <FlipElement key={dojo.id} dojo={dojo} /> )}
+        </div>
+    </div>
+</Section>
