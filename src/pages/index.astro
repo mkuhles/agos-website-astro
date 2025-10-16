@@ -2,9 +2,9 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Footer from "../components/Footer.astro";
-import ContentSection from "../components/ContentSection.astro";
-import FirstSection from "../components/FirstSection.astro";
-import SEOSection from "../components/SEOSection.astro";
+import SectionContent from "../components/SectionContent.astro";
+import SectionFirst from "../components/SectionFirst.astro";
+import SectionSEO from "../components/SectionSEO.astro";
 import UpButton from "../components/UpButton.astro";
 
 const dojos = await getCollection('dojos');
@@ -16,12 +16,12 @@ if(!agos) {
 
 <BaseLayout pageTitle={agos.data.name}>
 	<div id="top"></div>
-  <FirstSection agos={agos} dojos={dojos} />
-  <ContentSection id="agos" class="about-section" dojo={agos} />
+  <SectionFirst agos={agos} dojos={dojos} />
+  <SectionContent id="agos" class="about-section" dojo={agos} />
 
-  {dojos.map( (dojo: any) =>  <ContentSection key={dojo.id} dojo={dojo} /> )}
+  {dojos.map( (dojo: any) =>  <SectionContent key={dojo.id} dojo={dojo} /> )}
 
-  <SEOSection />
+  <SectionSEO />
   <Footer />
   <UpButton />
 </BaseLayout>
