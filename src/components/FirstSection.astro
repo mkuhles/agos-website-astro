@@ -1,0 +1,18 @@
+---
+import FlipElement from "./FlipElement.astro";
+
+const {agos, dojos} = Astro.props;
+---
+<section class="viewport-one">
+    <div>
+      <div class="header">
+        <h1>{agos.data.name}</h1>
+      </div>
+      <div class="flex-center">
+        <div id="circle-container" class="circle-container">
+          <FlipElement dojo={agos} className="center-element" />
+          {dojos.map( (dojo: any) => <FlipElement key={dojo.id} dojo={dojo} /> )}
+        </div>
+      </div>
+    </div>
+  </section>

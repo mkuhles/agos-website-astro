@@ -3,8 +3,9 @@ import FlipCard from "./FlipCard.astro";
 import SocialIcons from "./SocialIcons.astro";
 
 const dojo = Astro.props.dojo.data;
+const className = Astro.props.className || "circle-element circle";
 ---
-<FlipCard className="circle-element circle">
+<FlipCard className={className}>
   <div class="flip-card-front-inner" slot="front">
     {dojo.logo
         ? <img slot="front" src={dojo.logo} alt={"Dojo " + dojo.name} />
@@ -23,4 +24,3 @@ const dojo = Astro.props.dojo.data;
     <a class="btn" href={"#" + dojo.id}>Erfahre mehr</a>
   </div>
 </FlipCard>
-

@@ -1,61 +1,29 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Footer from "../components/Footer.astro";
-import {Content as SEO} from '../data/seo.md'
-import DojoCircle from "../components/DojoCircle.astro";
-import DojoSection from "../components/DojoSection.astro";
-import { getCollection, getEntryBySlug } from 'astro:content';
-import Section from "../components/Section.astro";
-import FlipCard from "../components/FlipCard.astro";
-import SocialIcons from "../components/SocialIcons.astro";
-// import AgosContent from '../content/agos.md';
+import ContentSection from "../components/ContentSection.astro";
+import FirstSection from "../components/FirstSection.astro";
+import SEOSection from "../components/SEOSection.astro";
+import UpButton from "../components/UpButton.astro";
 
-const logo = "/assets/agos.png";
 const dojos = await getCollection('dojos');
 const agos = await getCollection('agos').then( (entries) => entries.find( (entry) => entry.slug === 'agos' ) ) ;
-console.log(agos)
 if(!agos) {
   throw new Error("AGOS entry not found in content collection 'agos'");
 }
-
-const pageTitle = agos.data.name;
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={agos.data.name}>
 	<div id="top"></div>
-  <section class="viewport-one">
-    <div>
-      <div class="header">
-        <h1>{pageTitle}</h1>
-      </div>
-      <div class="flex-center">
-        <div id="circle-container" class="circle-container">
-          <FlipCard className="center-element">
-            <div class="flip-card-front-inner" slot="front"><img src={agos.data.logo} alt={pageTitle} /></div>
-            <div class="flip-card-back-inner" slot="back">
-              {pageTitle}
-              <SocialIcons icons={{
-                facebook: agos.data.facebook,
-                title: 'AGOS',
-              }} /> 
-              <a class="btn" href="#agos">Erfahre mehr</a>
-            </div>
-          </FlipCard> 
-          {dojos.map( (dojo: any) => <DojoCircle key={dojo.id} dojo={dojo} /> )}
-        </div>
-      </div>
-    </div>
-  </section>
-  <DojoSection id="agos" class="about-section" dojo={agos} />
+  <FirstSection id="hero" class="hero-section" agos={agos} dojos={dojos} />
+  <ContentSection id="agos" class="about-section" dojo={agos} />
 
-  {dojos.map( (dojo: any) =>  <DojoSection key={dojo.id} dojo={dojo} /> )}
+  {dojos.map( (dojo: any) =>  <ContentSection key={dojo.id} dojo={dojo} /> )}
 
-  <Section class="seo-section">
-    <SEO />
-  </Section>
+  <SEOSection />
   <Footer />
-  <div class="up"><a class="btn" href="#top" title="Zurück zum Start">hoch</a></div>
-
+  <UpButton />
 </BaseLayout>
 
 <script>
