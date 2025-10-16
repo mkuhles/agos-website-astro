@@ -4,17 +4,24 @@ import Footer from "../components/Footer.astro";
 import {Content as SEO} from '../data/seo.md'
 import DojoCircle from "../components/DojoCircle.astro";
 import DojoSection from "../components/DojoSection.astro";
-import { getCollection } from 'astro:content';
+import { getCollection, getEntryBySlug } from 'astro:content';
 import Section from "../components/Section.astro";
 import FlipCard from "../components/FlipCard.astro";
+import SocialIcons from "../components/SocialIcons.astro";
+// import AgosContent from '../content/agos.md';
 
-const pageTitle = "AGOS - Aikido Gemeinschaft Oder-Spree";
 const logo = "/assets/agos.png";
 const dojos = await getCollection('dojos');
+const agos = await getCollection('agos').then( (entries) => entries.find( (entry) => entry.slug === 'agos' ) ) ;
+console.log(agos)
+if(!agos) {
+  throw new Error("AGOS entry not found in content collection 'agos'");
+}
 
+const pageTitle = agos.data.name;
 ---
 
-<BaseLayout pageTitle="Home">
+<BaseLayout pageTitle={pageTitle}>
 	<div id="top"></div>
   <section class="viewport-one">
     <div>
@@ -24,9 +31,14 @@ const dojos = await getCollection('dojos');
       <div class="flex-center">
         <div id="circle-container" class="circle-container">
           <FlipCard className="center-element">
-            <div slot="front"><img src={logo} alt={pageTitle} /></div>
-            <div slot="back">
-                <a class="btn" href="#agos">Erfahre mehr</a>
+            <div class="flip-card-front-inner" slot="front"><img src={agos.data.logo} alt={pageTitle} /></div>
+            <div class="flip-card-back-inner" slot="back">
+              {pageTitle}
+              <SocialIcons icons={{
+                facebook: agos.data.facebook,
+                title: 'AGOS',
+              }} /> 
+              <a class="btn" href="#agos">Erfahre mehr</a>
             </div>
           </FlipCard> 
           {dojos.map( (dojo: any) => <DojoCircle key={dojo.id} dojo={dojo} /> )}
@@ -34,12 +46,9 @@ const dojos = await getCollection('dojos');
       </div>
     </div>
   </section>
+  <DojoSection id="agos" class="about-section" dojo={agos} />
 
-  {dojos.map( (dojo: any) => {
-    console.log(dojo.body);
-    
-    return <DojoSection key={dojo.id} dojo={dojo} />
-  })}
+  {dojos.map( (dojo: any) =>  <DojoSection key={dojo.id} dojo={dojo} /> )}
 
   <Section class="seo-section">
     <SEO />
