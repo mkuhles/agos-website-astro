@@ -1,4 +1,5 @@
 ---
+import Button from "./Button.astro";
 import FlipCard from "./FlipCard.astro";
 import SocialIcons from "./SocialIcons.astro";
 
@@ -21,6 +22,7 @@ const className = Astro.props.className || "circle-element circle";
       gmaps: dojo.gmaps,
       dojoName: dojo.name
     }} />
-    <a class="btn" href={"#" + dojo.id}>Erfahre mehr</a>
+    <Button type="more" title="Erfahre mehr" href={"#" + dojo.id} />
   </div>
 </FlipCard>
+

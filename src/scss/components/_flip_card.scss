@@ -24,6 +24,17 @@
   transform: rotateY(180deg);
 }
 
+/* Keyboard-Fokus soll flippen wie Hover: */
+.flip-card:focus-within .flip-card-inner,
+.flip-card:focus-visible .flip-card-inner{
+  transform: rotateY(180deg);
+}
+
+/* Reduced motion: nicht drehen, siehe dein R-Media-Query */
+@media (prefers-reduced-motion: reduce){
+  .flip-card-inner{ transition:none; transform:none; }
+}
+
 /* Position the front and back side */
 .flip-card-front, .flip-card-back {
   position: absolute;
@@ -33,12 +44,12 @@
   backface-visibility: hidden;
   
   border-radius: 50%;
-  background-color: var(--light-green);
+  background-color: var(--background-primary);
   background-position: center;
   // background-image: url('../src/assets/stones.png');
   background-size: 20vmin;
   box-shadow: 0px 0px 10px var(--dark-green);
-  color: var(--background-primary);
+  color: var(--light-green);
   
   display: flex;
   justify-content: center;
@@ -48,6 +59,12 @@
     max-width: 100%;
     max-height: 100%;
   }
+
+  *:focus,
+  *:focus-visible {
+    outline: 2px dashed var(--light-green);
+    outline-offset: 2px;
+  }
 }
 
 /* Style the back side */
@@ -56,17 +73,10 @@
   font-size: 2vmin;
 
   a.btn {
-    border-color: var(--background-primary);
-    background-color: var(--dark-green);
-    color: var(--background-primary);
-    padding: 0.5vmin 1vmin;
-  }
-  a.btn:hover {
-    background-color: var(--background-primary);
-    color: var(--dark-green);
+    margin: auto;
   }
 }
 
 .flip-card-back-inner {
-  padding: 3vmin;
+  padding: 3.5vmin 3vmin 2.5vmin 3vmin;
 }

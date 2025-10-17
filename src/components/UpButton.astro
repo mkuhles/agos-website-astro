@@ -1,53 +1,23 @@
+---
+import Button from "./Button.astro";
+---
+
 <style lang="scss" scoped>
 //@import '../scss/_variables.scss';
   .up {
     position: fixed;
-    width: var(--up-btn-size);
-    height: var(--up-btn-size);
+    width: var(--btn-size);
+    height: var(--btn-size);
     bottom: calc(var(--section-padding) / 2);
     right: calc(var(--section-padding) / 2);
     z-index: 1000;
 
     @media (min-width: 600px) {
-      right: calc(var(--section-padding) - var(--up-btn-size));
+      right: calc(var(--section-padding) - var(--btn-size));
     }
   }  
-  .up-btn {
-    display: block;
-    width: 100%;
-    height: 100%;
-    text-decoration: none;
-    position: relative;
-  }
-  .up-btn__enso, .up-btn__arrow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
-  .up-btn__enso {
-    background-image: url('/assets/enso.png');
-  }
-
-  @keyframes chevron-movement {
-    from {top:10%;}
-    to {top:0;}
-  }
-  .up-btn__arrow {
-    background-image: url('/assets/chevron.png');
-
-    &:hover {
-      animation: chevron-movement 0.5s ease-in-out infinite alternate;
-    }
-  }
 </style>    
 
 <div class="up">
-    <a class="up-btn" href="#top" title="Zurück zum Start">
-        <div class="up-btn__enso" />
-        <div class="up-btn__arrow" />
-    </a>
+    <Button type="up" title="Zurück nach oben" href="#top" />
 </div>

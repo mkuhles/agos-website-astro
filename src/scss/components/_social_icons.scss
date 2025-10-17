@@ -2,12 +2,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
-  margin-bottom: 1vmin;
 }
 
 .social-icon {
-  padding: 1.5vmin 1vmin;
+  padding: 1vmin;
+  margin: .5vmin;
  
   i {
   display: block;
@@ -24,4 +23,10 @@
     background-image: url('/assets/google-maps.png');
   }
  }
+
+  &:focus,
+  &:focus-visible {
+    outline: 2px dashed var(--light-green);
+    outline-offset: 0;
+  }
 }

@@ -70,10 +70,13 @@
   .flip-card-front {
     background-color: transparent;
     transition: opacity 0.6s ease-in-out;
-
-    
   }
   &:hover .flip-card-front {
+    opacity: 0;
+  }
+  /* Keyboard-Fokus soll flippen wie Hover: */
+  &:focus-within .flip-card-front,
+  &:focus-visible .flip-card-front{
     opacity: 0;
   }
 }
