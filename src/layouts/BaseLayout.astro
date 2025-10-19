@@ -1,5 +1,8 @@
 ---
+import Footer from '../components/Footer.astro';
+import UpButton from '../components/UpButton.astro';
 import '../scss/styles.scss';
+
 const { pageTitle } = Astro.props;
 ---
 <!DOCTYPE html>
@@ -13,5 +16,7 @@ const { pageTitle } = Astro.props;
 	</head>
 	<body>
 		<slot />
+		<Footer />
+		<UpButton />
 	</body>
 </html>

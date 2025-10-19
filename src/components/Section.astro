@@ -1,6 +1,9 @@
 ---
-const { type = '', id = '' } = Astro.props;
-const className = `section section--${type}` + (Astro.props.className ? ` ${Astro.props.className}` : '');
+const { type = '', id = '', fullScreen = true } = Astro.props;
+const className = `section section--${type}` 
+    + (Astro.props.className ? ` ${Astro.props.className}` : '')
+    + (fullScreen ? ' section--full-screen' : '');
+
 ---
 
 <section class={className} id={id}>

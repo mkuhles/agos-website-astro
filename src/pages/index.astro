@@ -1,11 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Footer from "../components/Footer.astro";
 import SectionContent from "../components/SectionContent.astro";
 import SectionFirst from "../components/SectionFirst.astro";
 import SectionSEO from "../components/SectionSEO.astro";
-import UpButton from "../components/UpButton.astro";
+import Imprint from '../components/Imprint.astro';
 
 const dojos = await getCollection('dojos');
 const agos = await getCollection('agos').then( (entries) => entries.find( (entry) => entry.slug === 'agos' ) ) ;
@@ -17,13 +16,12 @@ if(!agos) {
 <BaseLayout pageTitle={agos.data.name}>
 	<div id="top"></div>
   <SectionFirst agos={agos} dojos={dojos} />
-  <SectionContent id="agos" class="about-section" content={agos} />
+  <!-- <SectionContent id="agos" class="about-section" content={agos} /> -->
 
-  {dojos.map( (dojo: any) =>  <SectionContent key={dojo.id} content={dojo} /> )}
+  <!-- {dojos.map( (dojo: any) =>  <SectionContent key={dojo.id} content={dojo} /> )} -->
 
-  <SectionSEO />
-  <Footer />
-  <UpButton />
+  <!-- <SectionSEO /> -->
+   <Imprint />
 </BaseLayout>
 
 <script>
@@ -38,6 +36,5 @@ if(!agos) {
     document.documentElement.classList.toggle('reduced-motion', e.matches)
   ); // Fallback
 
-  console.log('useCircleAnimation', mq);
   {useCircleAnimation(mq.matches)}
 </script>
