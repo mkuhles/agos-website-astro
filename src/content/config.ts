@@ -18,9 +18,11 @@ const agos = defineCollection({
   schema: z.object({
     id: z.string(),
     name: z.string(),
+    location: z.string(),
     facebook: z.string().optional(),
-    // gmaps: z.string().optional(),
+    gmaps: z.string().optional(),
     logo: z.string(),
+    image: z.string().optional(),
   }),
 });
 

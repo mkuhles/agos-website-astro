@@ -1,4 +1,10 @@
 ---
+interface Props {
+  title: string;
+  type: "up" | "more";
+  href: string;
+}
+
 const { title, type, href } = Astro.props;
 ---
 <style lang="scss" scoped>

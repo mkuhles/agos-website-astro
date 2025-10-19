@@ -1,5 +1,11 @@
 ---
+import type { CollectionEntry } from 'astro:content';
 import Section from './Section.astro';
+
+interface Props {
+    content: CollectionEntry<'dojos'> | CollectionEntry<'agos'>;
+    type?: string;
+}
 
 const content = Astro.props.content.data;
 const { Content } = await Astro.props.content.render();

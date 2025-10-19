@@ -1,4 +1,13 @@
 ---
+interface Props {
+    icons: {
+        dojoName: string;
+        title?: string;
+        facebook?: string;
+        gmaps?: string;
+    }
+}
+
 const icons = Astro.props.icons;
 if(!icons.title) {
     icons.title = "Dojos " + icons.dojoName;

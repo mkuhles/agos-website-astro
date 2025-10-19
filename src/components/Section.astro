@@ -1,5 +1,12 @@
 ---
-const { type = '', id = '', fullScreen = true } = Astro.props;
+interface Props {
+    type: string;
+    id?: string;
+    fullScreen?: boolean;
+    className?: string;
+}
+
+const { type, id = '', fullScreen = true } = Astro.props;
 const className = `section section--${type}` 
     + (Astro.props.className ? ` ${Astro.props.className}` : '')
     + (fullScreen ? ' section--full-screen' : '');

@@ -1,4 +1,9 @@
 ---
+interface Props {
+  className?: string;
+  id?: string;
+}
+
 let { className, id } = Astro.props
 if (!id) {
   id = 'flip-card-' + Math.random().toString(36).substring(2, 9);
