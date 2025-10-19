@@ -26,7 +26,7 @@ const { title, type, href } = Astro.props;
     background-size: contain;
   }
   &::before {
-    background-image: url('/assets/enso.png');
+    background-image: url('assets/enso.png');
   }
 
   &--up {
@@ -35,7 +35,7 @@ const { title, type, href } = Astro.props;
         to {top:clamp(-8px, -1vmin, -20px);}
     }
     &::after {
-        background-image: url('/assets/chevron.png');
+        background-image: url('assets/chevron.png');
     }
     &:focus,
     &:focus-visible,
@@ -52,7 +52,7 @@ const { title, type, href } = Astro.props;
         to {top:-10%;}
     }
     &::after {
-        background-image: url('/assets/chevron.png');
+        background-image: url('assets/chevron.png');
         transform: rotate(180deg);
         top: -20%;
     }

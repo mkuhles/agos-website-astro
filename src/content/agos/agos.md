@@ -2,7 +2,7 @@
 id: agos
 name: "Aikido Gemeinschaft Oder-Spree e.V."
 facebook: "https://www.facebook.com/p/AikidoGemeinschaft-OderSpree-EV-100077997653469/"
-logo: "/assets/agos.png"
+logo: "assets/agos.png"
 ---
 Die Aikido Gemeinschaft Oder-Spree e.V. (AGOS) wurde 1990 gegründet und ist ein gemeinnütziger Verein, der sich der Verbreitung und Förderung der Kampfkunst Aikido widmet. Unser Ziel ist es, Aikido als Weg der persönlichen Entwicklung, Selbstverteidigung und körperlichen Fitness zu lehren und zu praktizieren.
 
