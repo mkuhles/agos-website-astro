@@ -7,41 +7,45 @@ const MAX_OPACITY = 1;
 const OPACITY_STEP = 1 / STEP_NUMBER;
 
 export default function useCircleAnimation(skipInitialAnimation = false) {
-  let angle = 0;
-  let radius = 0;
-  let opacity = 0;
-  let windowsize = [window.innerWidth, window.innerHeight];
+  let angle = 0, radius = 0, opacity = 0;
+  let width, height, vmin, maxRadius, radiusStep;
 
-  const [width, height] = windowsize;
-  const vmin = width < height ? width : height;
-  const maxRadius = vmin * 0.3; // 50px padding
-  const radiusStep = maxRadius / STEP_NUMBER;
-  
-  if (skipInitialAnimation) {
-    arrangeCircleElements(MAX_ANGLE, maxRadius, MAX_OPACITY);
-    return;
+  function recomputeSizes() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    vmin = Math.min(width, height);
+    maxRadius = vmin * 0.3;
+    radiusStep = maxRadius / STEP_NUMBER;
+
+    // keep current radius within new bounds (don't restart animation)
+    if (radius > maxRadius) radius = maxRadius;
   }
 
   function handleResize() {
-    windowsize = [window.innerWidth, window.innerHeight];
+    recomputeSizes();
+    arrangeCircleElements(angle, radius, opacity);
   }
+  recomputeSizes();
   window.addEventListener('resize', handleResize);
+
+  if (skipInitialAnimation) {
+    arrangeCircleElements(MAX_ANGLE, maxRadius, MAX_OPACITY);
+    return function stopNoop() { /* nothing to cleanup */ };
+  }
 
   const interval = setInterval(() => {
     angle = calculateNextState(angle, MAX_ANGLE, ANGLE_STEP);
     radius = calculateNextState(radius, maxRadius, radiusStep);
     opacity = calculateNextState(opacity, MAX_OPACITY, OPACITY_STEP);
-    
+
     arrangeCircleElements(angle, radius, opacity);
   }, 25);
 
-  window.addEventListener('beforeunload', () => {
-    window.removeEventListener('resize', handleResize);
+  // return cleanup so caller can stop the animation
+  return function stop() {
     clearInterval(interval);
-  });
-  
-
-  return;
+    window.removeEventListener('resize', handleResize);
+  };
 }
 
 function calculateNextState(previous, max, step) {
