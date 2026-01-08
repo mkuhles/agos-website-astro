@@ -16,12 +16,12 @@ if(!agos) {
 <BaseLayout pageTitle={agos.data.name}>
 	<div id="top"></div>
   <SectionFirst agos={agos} dojos={dojos} />
-  <!-- <SectionContent id="agos" class="about-section" content={agos} /> -->
+  <SectionContent id="agos" class="about-section" content={agos} />
 
-  <!-- {dojos.map( (dojo: any) =>  <SectionContent key={dojo.id} content={dojo} /> )} -->
+  {dojos.map( (dojo: any) =>  <SectionContent key={dojo.id} content={dojo} /> )}
 
-  <!-- <SectionSEO /> -->
-   <Imprint />
+  <SectionSEO />
+  <Imprint />
 </BaseLayout>
 
 <script>
@@ -32,9 +32,6 @@ if(!agos) {
   mq.addEventListener?.('change', e =>
     document.documentElement.classList.toggle('reduced-motion', e.matches)
   );
-  mq.addListener?.(e =>
-    document.documentElement.classList.toggle('reduced-motion', e.matches)
-  ); // Fallback
 
   {useCircleAnimation(mq.matches)}
 </script>

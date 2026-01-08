@@ -22,13 +22,13 @@ const className = Astro.props.className || "circle-element circle";
 
   <div class="flip-card-back-inner" slot="back">
     <div class="title">{dojo.name}</div>
-    <div class="address">{dojo.location}</div>
+    <!-- <div class="address">{dojo.location}</div> -->
     <SocialIcons icons={{
       facebook: dojo.facebook,
       gmaps: dojo.gmaps,
       dojoName: dojo.name
     }} />
-    <!-- <Button type="more" title="Erfahre mehr" href={"#" + dojo.id} /> -->
+    <Button type="more" title="Erfahre mehr" href={"#" + dojo.id} />
   </div>
 </FlipCard>
 
