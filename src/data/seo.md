@@ -13,7 +13,7 @@ Bereits Kinder ab vier Jahren können bei uns spielerisch in die Welt der Kampfk
 
 Aikido ist eine defensive Kampfkunst, die auf Harmonie statt Konfrontation setzt. Durch fließende Bewegungen und wache Präsenz lernen unsere Mitglieder, sich selbst besser wahrzunehmen, klare Grenzen zu setzen und in herausfordernden Situationen ruhig zu bleiben. Es ist kein Wettkampfsport, sondern ein gemeinschaftliches Training, das die Persönlichkeitsentwicklung fördert.
 
-### Aikido ist keine Kampfsportart
+### Aikido ist kein Kampfsport
 
 Im Unterschied zu Kampfsportarten wie Karate oder Judo gibt es im Aikido keine Wettkämpfe, keine Gewichtsklassen und keinen Leistungsdruck. Es geht nicht darum, zu gewinnen oder sich mit anderen zu messen. Vielmehr stehen die partnerschaftliche Übung, das gegenseitige Lernen und die Entwicklung innerer Stärke im Mittelpunkt. Dadurch eignet sich Aikido besonders gut für Menschen, die eine friedvolle, ganzheitliche Form der Selbstverteidigung suchen.
 
