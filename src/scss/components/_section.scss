@@ -26,7 +26,7 @@ section {
 /* .dojo-section */
 .section--content {
   .section__image {
-    max-width: var(--circle-element-max-diameter);
+    max-width: min(var(--circle-element-max-diameter), 40vmin);
     margin: 5vmin auto;
     
     @media screen and (min-width: 600px) {
@@ -46,7 +46,7 @@ section {
     display: flex;
     justify-content: space-between;
     // align-items: center;
-    font-size: 1.5vmin;
+    font-size: max(1.5vmin, 12px);
 
     a {
         color: var(--heighlight-color);
