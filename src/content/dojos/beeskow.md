@@ -1,5 +1,4 @@
 ---
-id: beeskow
 name: "Ka-yobi Dojo Radinkendorf"
 location: "Radinkendorf"
 facebook: "https://www.facebook.com/aikidogemeinschaft"

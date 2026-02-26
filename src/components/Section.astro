@@ -6,7 +6,7 @@ interface Props {
     className?: string;
 }
 
-const { type, id = '', fullScreen = true } = Astro.props;
+const { type, id = '', fullScreen = false } = Astro.props;
 const className = 'section'
     + (type ? ` section--${type}` : '')
     + (Astro.props.className ? ` ${Astro.props.className}` : '')
