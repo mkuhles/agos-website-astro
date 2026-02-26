@@ -1,0 +1,128 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionContent from '../../components/SectionContent.astro';
+import Section from '../../components/Section.astro';
+
+export async function getStaticPaths() {
+  const dojos = await getCollection('dojos');
+
+  return dojos
+    .filter((dojo) => dojo.data.isActive)
+    .map((dojo) => ({
+      params: { dojo: dojo.slug },
+      props: { dojo },
+    }));
+}
+
+interface Props {
+  dojo: CollectionEntry<'dojos'>;
+}
+
+const { dojo } = Astro.props;
+const { Content } = await dojo.render();
+---
+
+<BaseLayout pageTitle={dojo.data.name}>
+  {dojo.data.logo && (
+    <Section id="dojo-logo" className="dojo-header" type="content">
+      <div class="dojo-logo">
+        <img src={dojo.data.logo} alt={"Logo von " + dojo.data.name} />
+        <h1 class="section__title">{dojo.data.name}</h1>
+      </div>
+    </Section>
+  )}
+
+  {dojo.data.trainings.length > 0 && (
+    <Section id="dojo-trainings"  className="dojo-trainings" type="content">
+      <div class="dojo-trainings">
+        <h2 class="section__title">Trainingszeiten</h2>
+        <div class="dojo-trainings__content">
+          {dojo.data.trainings.map((day) => (
+            <div class="dojo-trainings__day">
+              <div class="dojo-training__day-of-the-week">{day.day}</div>
+              {day.slots.map((slot) => (
+                <div class="dojo-training">
+                  <div class="dojo-training__time">{slot.time}</div>
+                  <div class="dojo-training__title">{slot.title}</div>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    </Section>
+  )}
+
+  {dojo.data.image && (
+    <Section id="dojo-impressions" className="dojo-impressions" type="content">
+      <div class="dojo-impressions">
+        <img src={dojo.data.image} alt={"Dojo " + dojo.data.name} />
+        <div>Impressionen aus dem Dojo</div>
+      </div>
+    </Section>
+  )}
+
+  <Section id="dojo-description" className="dojo-description" type="content">
+    <h2 class="section__title">{dojo.data.name}</h2>
+    <div class="dojo-description">
+        <Content />
+    </div>
+  </Section>
+</BaseLayout>
+
+
+<style>
+#dojo-trainings {
+  background-color: #ecdbc1;
+}
+.dojo-logo {
+  text-align: center;
+  max-width: 60vw;
+  margin: auto;
+}
+.dojo-trainings {
+  background-image: url('/assets/trainings.jpeg');
+  background-position: right bottom;
+  background-size: 50%;
+  background-repeat: no-repeat;
+
+  @media (min-width: 420px) {  
+    background-size: contain;
+  }
+
+  max-width: min(100%,30rem);
+  background-color: var(--background-secondary);
+  margin: auto;
+
+
+}
+.dojo-impressions {
+  text-align: center;
+}
+.dojo-impressions img {
+  max-width: min(100%,40rem);
+  margin: auto;
+}
+
+.dojo-training {
+  margin-bottom: 1rem;
+}
+.dojo-training__day-of-the-week {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+.dojo-training__time {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.dojo-training__title {
+  max-width: 50%;
+
+  @media (min-width: 420px) {  
+    max-width: 15em;
+  }
+}
+</style>
