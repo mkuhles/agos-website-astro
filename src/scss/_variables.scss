@@ -11,8 +11,8 @@
   --dark-green: #1a3524;
   --light-green: #243f2c;
 
-  --beige-first: #ddcca4;
-  --beige-second: #d4c193;
+  --beige-first: #fbf7ef;
+  --beige-second: #f3ecd9;
 
   --black: #1f2123;
 
@@ -20,4 +20,17 @@
   --background-secondary: var(--beige-second);
   --border-color: var(--dark-green);
   --heighlight-color: var(--light-green);
+
+
+  
+  /* Alternative Farbpalette (optional, je nach Geschmack) */
+  --bg: #f3ecd9;          /* warmes Elfenbein/Sand */
+  --paper: #fbf7ef;       /* helles "Papier" */
+  --ink: #1f2a24;         /* fast-schwarz, warm */
+  --muted: #55645c;
+  --green: #1f4b3a;       /* Dojo-Akzent */
+  --red: #a63a2b;         /* sparsam (Buttons/Details) */
+  --line: rgba(31, 42, 36, 0.14);
+  --shadow: 0 10px 30px rgba(0,0,0,0.10);
+
 }

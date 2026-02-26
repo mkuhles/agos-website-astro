@@ -4,10 +4,14 @@ h2:first-child {
 
 section {
   margin: 0;
-  padding: calc(var(--section-padding) / 2) var(--section-padding);
+  padding: var(--section-padding);
   position: relative;
   box-sizing: border-box;
   border-bottom: 1px solid var(--border-color);
+
+  // @media screen and (min-width: 800px) {
+    // padding: calc(var(--section-padding) / 2) var(--section-padding);
+  // }
 
   &.section--full-screen {
     @media screen and (min-width: 600px) {
