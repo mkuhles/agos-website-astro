@@ -4,7 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionContent from "../components/SectionContent.astro";
 import SectionFAQ from "../components/SectionFAQ.astro";
 import SectionFirst from "../components/SectionFirst.astro";
-import SectionSEO from "../components/SectionSEO.astro";
+import SectionContact from "../components/SectionContact.astro";
 
 const dojos = await getCollection('dojos');
 const agos = await getCollection('agos').then( (entries) => entries.find( (entry) => entry.slug === 'agos' ) ) ;
@@ -17,10 +17,7 @@ if(!agos) {
   <SectionFirst agos={agos} dojos={dojos} />
   <SectionContent id="agos" class="about-section" content={agos} />
   <SectionFAQ />
-
-  <!-- {dojos.map( (dojo: any) =>  <SectionContent key={dojo.id} content={dojo} /> )} -->
-
-  <SectionSEO />
+  <SectionContact />
 </BaseLayout>
 
 <script>

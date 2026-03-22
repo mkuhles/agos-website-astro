@@ -1,9 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Imprint from "../components/Imprint.astro";
 import Section from "../components/Section.astro";
+import { getCollection } from 'astro:content';
 
-import ImprintMd from "../content/imprint.md";
+// Load trainer data
+const trainer = await getCollection('trainer');
+const rico = trainer.find(t => t.slug === 'rico');
 ---
 
 
@@ -11,6 +13,50 @@ import ImprintMd from "../content/imprint.md";
 
 <BaseLayout pageTitle="Impressum">
   <Section type="imprint" id="imprint" fullScreen={false}>
-    <ImprintMd />
+    <h1>Impressum</h1>
+
+    <h2>Angaben gemäß § 5 DDG</h2>
+
+    <p>
+      <strong>Aikido-Gemeinschaft-Oder-Spree e.V.</strong><br/>
+      c/o {rico?.data.fullName || 'Rico Kuhles'}<br/>
+      Dorfstraße 11<br/>
+      15299 Müllrose OT Dubrow
+    </p>
+
+    <h2>Vertreten durch den Vorstand:</h2>
+
+    <p>
+      Rico Kuhles (1. Vorsitzender)
+    </p>
+
+    <h2>Kontakt</h2>
+
+    <p>
+      Telefon: {rico?.data.contactInfo?.phone ? `${rico.data.contactInfo.phone}` : '015251022300'}<br/>
+      E-Mail: <a href={`mailto:${rico?.data.contactInfo?.email || 'rico.kuhles@gmx.de'}`}>{rico?.data.contactInfo?.email || 'rico.kuhles@gmx.de'}</a>
+    </p>
+
+    <h2>Registereintrag</h2>
+
+    <p>
+      Eingetragen im Vereinsregister.<br/>
+      Registergericht: Amtsgericht Frankfurt (Oder)<br/>
+      Registernummer: VR 6883
+    </p>
+
+    <h2>Gemeinnützigkeit</h2>
+
+    <p>
+      Der Verein ist als gemeinnützig anerkannt.
+    </p>
+
+    <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:</h2>
+
+    <p>
+      Rico Kuhles<br/>
+      Dorfstraße 11<br/>
+      15299 Müllrose OT Dubrow
+    </p>
   </Section>
 </BaseLayout>

@@ -37,4 +37,27 @@ const agos = defineCollection({
   }),
 });
 
-export const collections = { dojos, agos };
+const trainer = defineCollection({
+  type: 'content', // Markdown/MDX
+  schema: z.object({
+    isActive: z.boolean(),
+    firstName: z.string(),
+    lastName: z.string(),
+    phone: z.string().optional(),
+    email: z.string().optional(),
+    bio: z.string().optional(),
+    image: z.string().optional(),
+  }).transform((data) => ({
+    ...data,
+    // Berechnete Felder
+    fullName: `${data.firstName} ${data.lastName}`,
+    displayName: data.firstName, // Für informelle Anrede
+    contactInfo: {
+      phone: data.phone,
+      email: data.email,
+      whatsappUrl: data.phone ? `https://wa.me/49${data.phone.replace(/^0/, '')}` : undefined,
+    },
+  })),
+});
+
+export const collections = { dojos, agos, trainer };

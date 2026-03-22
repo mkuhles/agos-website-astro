@@ -8,7 +8,7 @@ import Section from './Section.astro';
 
   <div class="faq-list">
     {items.map((item, index) => (
-      <details class="faq-item" open={index === 0}>
+      <details class="faq-item" open={false}>
         <summary>{item.question}</summary>
         <div class="faq-item__answer">
           {item.answer.map((paragraph) => (
