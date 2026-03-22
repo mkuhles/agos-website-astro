@@ -16,18 +16,21 @@ trainings:
       - time: "18:15 - 19:30"
         title: "Kinder ab 9 Jahre, Jugendliche und Erwachsene"
 ---
-Das Aikido Dojo Märkische Heide (Getsu-yōbi Dōjō) ist Teil der Aikido Gemeinschaft Oder Spree e.V..
-Hier trainieren Kinder, Jugendliche und Erwachsene in altersgerechten Gruppen.
+Das Dojo Märkische Heide befindet sich im Musikclub Gröditsch, einem kleinen, lebendigen Treffpunkt im Ort.
 
-Aikido ist eine japanische Kampfkunst, bei der es nicht um Gewinnen geht, sondern um Bewegung, Wahrnehmung und einen respektvollen Umgang miteinander. Neben waffenlosen Techniken wird auch mit traditionellen Trainingswaffen geübt, Bokutō (Holzschwert), Jō (Stock) und Tantō (Holzmesser).
+Wo sonst Konzerte und Veranstaltungen stattfinden, wird regelmäßig trainiert.
 
-Erwachsene finden im Aikido einen Ausgleich zum Alltag. Das Training ist gelenkschonend, verbessert Koordination und Körpergefühl und eignet sich auch für Menschen ohne sportliche Vorerfahrung.
+Gröditsch selbst ist ein ruhiger Ortsteil der Märkischen Heide mit ländlichem Charakter und viel Natur in der Umgebung.
 
-Kinder lernen Aikido spielerisch und altersgerecht. Im Mittelpunkt stehen sichere Bewegung, Vertrauen, Rücksichtnahme und klare Strukturen. Es gibt keine Wettkämpfe und keinen Leistungsdruck.
+Gerade dieser Gegensatz macht den Ort besonders. Außen ruhig und überschaubar, innen ein Raum für Bewegung, Austausch und gemeinsames Training.
 
-Trainiert wird in Gröditsch in festen Gruppen. Ein Einstieg und ein Probetraining sind jederzeit möglich.
+Trainiert wird überwiegend in altersbezogenen Gruppen. Von den Jüngsten ab 4 Jahren bis hin zu Jugendlichen und Erwachsenen hat jeder seinen eigenen Trainingsbereich. 
+Übergänge sind dabei fließend und orientieren sich am jeweiligen Stand.
 
-Aktuelle Trainingszeiten und Kontaktmöglichkeiten findest du auf der Vereinsseite oder direkt hier im online Dojo.
+Im Training geht es um saubere Bewegung, Timing und ein gutes Gefühl für den eigenen Körper. Man arbeitet miteinander und entwickelt sich mit der Zeit weiter.
+
+Das Training findet montags statt. 
+
 
 
 
