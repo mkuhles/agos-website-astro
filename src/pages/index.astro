@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionContent from "../components/SectionContent.astro";
+import SectionFAQ from "../components/SectionFAQ.astro";
 import SectionFirst from "../components/SectionFirst.astro";
 import SectionSEO from "../components/SectionSEO.astro";
 
@@ -13,9 +14,9 @@ if(!agos) {
 ---
 
 <BaseLayout pageTitle={agos.data.name} showHeader={false}>
-	<div id="top"></div>
   <SectionFirst agos={agos} dojos={dojos} />
   <SectionContent id="agos" class="about-section" content={agos} />
+  <SectionFAQ />
 
   <!-- {dojos.map( (dojo: any) =>  <SectionContent key={dojo.id} content={dojo} /> )} -->
 

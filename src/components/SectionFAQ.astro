@@ -1,0 +1,74 @@
+---
+import items from '../data/faq.json';
+import Section from './Section.astro';
+---
+
+<Section id="faq" type="content" className="faq-section">
+  <h2 class="section__title">Häufige Fragen</h2>
+
+  <div class="faq-list">
+    {items.map((item, index) => (
+      <details class="faq-item" open={index === 0}>
+        <summary>{item.question}</summary>
+        <div class="faq-item__answer">
+          {item.answer.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+        </div>
+      </details>
+    ))}
+  </div>
+</Section>
+
+<style>
+  .faq-section {
+    scroll-margin-top: 5rem;
+  }
+
+  .faq-list {
+    display: grid;
+    gap: 0.9rem;
+    max-width: 52rem;
+  }
+
+  .faq-item {
+    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.35);
+  }
+
+  .faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 1rem 1.25rem;
+    font-weight: 700;
+    color: var(--heighlight-color);
+    position: relative;
+    padding-right: 3rem;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item summary::after {
+    content: '+';
+    position: absolute;
+    right: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.4rem;
+    line-height: 1;
+  }
+
+  .faq-item[open] summary::after {
+    content: '-';
+  }
+
+  .faq-item__answer {
+    padding: 0 1.25rem 1.25rem;
+  }
+
+  .faq-item__answer p:last-child {
+    margin-bottom: 0;
+  }
+</style>

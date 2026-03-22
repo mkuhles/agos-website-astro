@@ -28,7 +28,22 @@ const { Content } = await dojo.render();
     <Section id="dojo-logo" className="dojo-header" type="content">
       <div class="dojo-logo">
         <img src={dojo.data.logo} alt={"Logo von " + dojo.data.name} />
-        <h1 class="section__title">{dojo.data.name}</h1>
+      </div>
+    </Section>
+  )}
+
+  <Section id="dojo-description" className="dojo-description" type="content">
+    <h1 class="section__title">{dojo.data.name}</h1>
+    <div class="dojo-description">
+        <Content />
+    </div>
+  </Section>
+
+  {dojo.data.image && (
+    <Section id="dojo-impressions" className="dojo-impressions" type="content">
+      <div class="dojo-impressions">
+        <img src={dojo.data.image} alt={"Dojo " + dojo.data.name} />
+        <div>Impressionen aus dem Dojo</div>
       </div>
     </Section>
   )}
@@ -53,22 +68,6 @@ const { Content } = await dojo.render();
       </div>
     </Section>
   )}
-
-  {dojo.data.image && (
-    <Section id="dojo-impressions" className="dojo-impressions" type="content">
-      <div class="dojo-impressions">
-        <img src={dojo.data.image} alt={"Dojo " + dojo.data.name} />
-        <div>Impressionen aus dem Dojo</div>
-      </div>
-    </Section>
-  )}
-
-  <Section id="dojo-description" className="dojo-description" type="content">
-    <h2 class="section__title">{dojo.data.name}</h2>
-    <div class="dojo-description">
-        <Content />
-    </div>
-  </Section>
 </BaseLayout>
 
 
@@ -78,30 +77,23 @@ const { Content } = await dojo.render();
 }
 .dojo-logo {
   text-align: center;
-  max-width: 60vw;
-  margin: auto;
 }
 .dojo-trainings {
   background-image: url('/assets/trainings.jpeg');
-  background-position: right bottom;
-  background-size: 50%;
+  background-position: right center;
+  background-size: contain;
   background-repeat: no-repeat;
 
-  @media (min-width: 420px) {  
-    background-size: contain;
-  }
-
-  max-width: min(100%,30rem);
+  max-width: 40rem;
   background-color: var(--background-secondary);
+  padding: 30px;
   margin: auto;
-
-
 }
 .dojo-impressions {
   text-align: center;
 }
 .dojo-impressions img {
-  max-width: min(100%,40rem);
+  max-width: 40rem;
   margin: auto;
 }
 
@@ -119,10 +111,6 @@ const { Content } = await dojo.render();
   font-weight: bold;
 }
 .dojo-training__title {
-  max-width: 50%;
-
-  @media (min-width: 420px) {  
-    max-width: 15em;
-  }
+  max-width: 15em;
 }
 </style>

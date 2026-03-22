@@ -3,9 +3,10 @@ interface Props {
   title: string;
   type: "up" | "more";
   href: string;
+  className?: string;
 }
 
-const { title, type, href } = Astro.props;
+const { title, type, href, className } = Astro.props;
 ---
 <style lang="scss" scoped>
 .btn {
@@ -67,5 +68,5 @@ const { title, type, href } = Astro.props;
 }
 </style>
 
-<a class={"btn btn--" + type} href={href} title={title} aria-label={title}>
+<a class={"btn btn--" + type + " " + className} href={href} title={title} aria-label={title}>
 </a>

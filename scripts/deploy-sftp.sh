@@ -2,7 +2,7 @@
 set -euo pipefail
 
 usage() {
-  cat <<'EOF2'
+  cat <<'EOF'
 Usage:
   scripts/deploy-sftp.sh [--env-file FILE] [--dry-run] [--local-dir dist] [--remote-dir /path] [--host HOST] [--port 22] [--user USER]
 
@@ -19,7 +19,7 @@ Notes:
   - Password is always requested interactively.
   - Do not put the password into the env file.
   - Upload uses mirror with delete to keep remote in sync.
-EOF2
+EOF
 }
 
 escape_lftp() {
@@ -164,7 +164,7 @@ if [[ "$DRY_RUN" == "1" ]]; then
   echo "Dry run enabled: no remote files will be changed."
 fi
 
-lftp -f /dev/stdin <<EOF2
+lftp -f /dev/stdin <<EOF
 set cmd:fail-exit true
 set net:max-retries 2
 set net:timeout 20
@@ -173,7 +173,7 @@ open -p "${PORT_ESC}" "sftp://${HOST_ESC}"
 user "${USER_ESC}" "${PASS_ESC}"
 ${MIRROR_CMD}
 bye
-EOF2
+EOF
 
 unset SFTP_PASSWORD PASS_ESC
 echo "Done."

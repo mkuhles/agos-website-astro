@@ -16,19 +16,19 @@ if(!icons.title) {
 
 <div class="social-icons">
     {icons.facebook ? (
-        <a href={icons.facebook} target="_blank" class="social-icon" title={"Facebook Seite des " + icons.title}>
+        <a href={icons.facebook} target="_blank" class="social-icon btn--circle" title={"Facebook Seite des " + icons.title}>
             <i class="facebook"></i>
         </a>
     ) : null}
     {icons.gmaps ? (
-        <a href={icons.gmaps} target="_blank" class="social-icon"  title={"Google Maps Seite des " + icons.title}>
+        <a href={icons.gmaps} target="_blank" class="social-icon btn--circle"  title={"Google Maps Seite des " + icons.title}>
             <i class="gmaps"></i>
         </a>
     ) : null}
 </div>
 
 <style lang="scss" scoped>
-    .social-icons {
+.social-icons {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,13 +53,5 @@ if(!icons.title) {
     background-image: url('/assets/google-maps.png');
   }
  }
-
-  &:hover,
-  &:focus,
-  &:focus-visible {
-    outline: 2px dashed var(--light-green);
-    outline-offset: -.2vmin;
-    border-radius: 50%;
-  }
 }
 </style>
