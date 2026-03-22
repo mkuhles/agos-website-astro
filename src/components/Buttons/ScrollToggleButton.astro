@@ -1,0 +1,126 @@
+---
+// Scroll-based button with automatic visibility toggling
+interface Props {
+  className?: string;
+  showOnScroll?: boolean; // true = show after scrolling, false = show before scrolling
+  type?: string;
+  title?: string;
+  href?: string;
+  onClick?: string;
+}
+
+const { className = '', showOnScroll = false, type, title, href, onClick } = Astro.props;
+---
+
+<div class={`scroll-toggle ${className} ${showOnScroll ? 'show-on-scroll' : 'show-on-top'}`}>
+  {href && <a class={`btn btn--${type} btn--circle`} href={href} title={title}></a>}
+  {onClick && <button class={`btn btn--${type} btn--circle`} onclick={onClick} title={title}></button>}
+</div>
+
+<style lang="scss" scoped>
+  .scroll-toggle {
+    position: fixed;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+
+    /* Initial state: show on top */
+    opacity: 1;
+    pointer-events: auto;
+
+    /* Show on scroll */
+    &.show-on-scroll {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Dynamic classes from JavaScript */
+    &.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    &.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .btn {
+      background-image: url('assets/enso.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      width: var(--btn-size);
+      height: var(--btn-size);
+      display: block;
+      position: relative;
+
+      @keyframes up-movement {
+          from {top:clamp(4px, 0.5vmin, 10px);}
+          to {top:clamp(-4px, -0.5vmin, -10px);}
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url('assets/chevron.png');
+      }
+      
+      &:focus-visible,
+      &:hover {
+        &::after {
+          animation: up-movement 0.5s ease-in-out infinite alternate;
+        }
+      }
+    }
+
+    &.up {
+      bottom: calc(var(--section-padding) / 2);
+      right: calc(var(--section-padding) / 2);
+
+      @media (min-width: 600px) {
+        right: calc(var(--section-padding) - var(--btn-size));
+      }
+    }
+
+    &.down {
+      bottom: calc(var(--section-padding) / 2);
+      left: 50%;
+      transform: translateX(-50%);
+
+      .btn::after {
+        transform: rotate(180deg);
+      }
+    }
+  }
+</style>
+
+<script>
+  // Scroll-based visibility logic
+  function updateButtonVisibility() {
+    const buttons = document.querySelectorAll('[class*="scroll-toggle"]');
+    const isScrolled = window.scrollY > 100;
+
+    buttons.forEach(button => {
+      const isShowOnScroll = button.classList.contains('show-on-scroll');
+      const shouldBeVisible = isShowOnScroll ? isScrolled : !isScrolled;
+
+      if (shouldBeVisible) {
+        button.classList.remove('hidden');
+        button.classList.add('visible');
+      } else {
+        button.classList.remove('visible');
+        button.classList.add('hidden');
+      }
+    });
+  }
+
+  // Add event listener
+  window.addEventListener('scroll', updateButtonVisibility);
+
+  // Initial check
+  updateButtonVisibility();
+</script>

@@ -1,0 +1,73 @@
+---
+// Import trainer collection
+import { getCollection } from 'astro:content';
+
+// Load trainer data
+const trainer = await getCollection('trainer');
+const rico = trainer.find(t => t.slug === 'rico');
+
+// Fallback if Rico is not found
+const WHATSAPP_CONFIG = {
+  phoneNumber: rico?.data.contactInfo?.whatsappUrl ? rico.data.contactInfo.whatsappUrl.replace('https://wa.me/', '') : '4915251022300',
+  message: `Hallo ${rico?.data.displayName || 'Rico'}, ich habe Fragen zu Aikido oder möchte ein Probetraining vereinbaren.`
+};
+
+// Create WhatsApp URL with proper encoding
+const whatsappUrl = `https://wa.me/${WHATSAPP_CONFIG.phoneNumber}?text=${encodeURIComponent(WHATSAPP_CONFIG.message)}`;
+
+import Section from './Section.astro';
+---
+
+<Section id="contact" type="content" className="contact-section">
+  <h2 class="section__title">Kontakt und Anmeldung</h2>
+
+  <div class="contact-content">
+    <p>Für Fragen oder ein Probetraining kannst du dich direkt bei uns melden.</p>
+
+    <a href={whatsappUrl} class="contact-button" target="_blank" rel="noopener noreferrer">
+      Jetzt per WhatsApp anfragen
+    </a>
+
+    <p><em>Ein Einstieg ist jederzeit möglich.</em></p>
+  </div>
+</Section>
+
+<style>
+  .contact-section {
+    scroll-margin-top: 5rem;
+  }
+
+  .contact-content {
+    max-width: 52rem;
+    text-align: center;
+  }
+
+  .contact-content p {
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .contact-button {
+    display: inline-block;
+    background: var(--heighlight-color);
+    color: white;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    margin: 1rem 0;
+  }
+
+  .contact-button:hover,
+  .contact-button:focus {
+    background: var(--background-secondary);
+    color: var(--heighlight-color);
+  }
+
+  .contact-content em {
+    color: var(--heighlight-color);
+    font-style: normal;
+    font-weight: 600;
+  }
+</style>
