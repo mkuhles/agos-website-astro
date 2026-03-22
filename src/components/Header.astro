@@ -1,0 +1,22 @@
+---
+import { getCollection } from "astro:content";
+
+const dojos = await getCollection("dojos");
+const activeDojos = dojos.filter((dojo) => dojo.data.isActive);
+---
+
+<header class="site-header">
+  <div class="site-header__content">
+    <a class="site-header__logo-link" href="/" aria-label="Zur Startseite">
+      <img src="/assets/agos.png" alt="Logo Aikido Gemeinschaft Oder-Spree" />
+    </a>
+    <nav class="site-header__nav" aria-label="Dojos">
+      <span class="site-header__label">Dojos</span>
+      <div class="site-header__links">
+        {activeDojos.map((dojo) => (
+          <a href={`/dojos/${dojo.slug}`}>{dojo.data.location}</a>
+        ))}
+      </div>
+    </nav>
+  </div>
+</header>
