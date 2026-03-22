@@ -1,5 +1,4 @@
 ---
-id: libbenichen
 name: "Moku-yobi Dojo Libbenichen"
 location: "Libbenichen"
 facebook: "https://www.facebook.com/p/Aikido-Dojo-Libbenichen-100083156716107"

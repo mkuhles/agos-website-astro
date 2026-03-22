@@ -1,5 +1,4 @@
 ---
-id: agos
 name: "Aikido Gemeinschaft Oder-Spree e.V."
 facebook: "https://www.facebook.com/p/AikidoGemeinschaft-OderSpree-EV-100077997653469/"
 logo: "assets/agos.png"
@@ -17,3 +16,4 @@ Aikido ist eine japanische Kampfkunst, bei der es nicht um Gewinnen geht, sonder
 Erwachsene finden im Aikido einen Ausgleich zum Alltag. Das Training ist gelenkschonend, verbessert Koordination und Körpergefühl und eignet sich auch für Menschen ohne sportliche Vorerfahrung.
 
 Kinder lernen Aikido spielerisch und altersgerecht. Im Mittelpunkt stehen sichere Bewegung, Vertrauen, Rücksichtnahme und klare Strukturen. Es gibt keine Wettkämpfe und keinen Leistungsdruck.
+
