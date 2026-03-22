@@ -1,10 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from "../layouts/BaseLayout.astro";
-import SectionContent from "../components/SectionContent.astro";
-import SectionFAQ from "../components/SectionFAQ.astro";
-import SectionFirst from "../components/SectionFirst.astro";
-import SectionContact from "../components/SectionContact.astro";
+import SectionContent from "../components/sections/SectionContent.astro";
+import SectionFAQ from "../components/sections/SectionFAQ.astro";
+import SectionFirst from "../components/sections/SectionFirst.astro";
+import SectionContact from "../components/sections/SectionContact.astro";
 
 const dojos = await getCollection('dojos');
 const agos = await getCollection('agos').then( (entries) => entries.find( (entry) => entry.slug === 'agos' ) ) ;

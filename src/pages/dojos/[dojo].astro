@@ -1,8 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import SectionContent from '../../components/SectionContent.astro';
-import Section from '../../components/Section.astro';
+import Section from '../../components/sections/Section.astro';
 
 export async function getStaticPaths() {
   const dojos = await getCollection('dojos');
