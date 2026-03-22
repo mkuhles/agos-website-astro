@@ -9,6 +9,10 @@ section {
   box-sizing: border-box;
   border-bottom: 1px solid var(--border-color);
 
+  &:last-child {
+    border: none;
+  }
+
   &.section--full-screen {
     @media screen and (min-width: 600px) {
       min-height: 100vh;
@@ -55,7 +59,7 @@ section {
         &:hover,
         &:focus,
         &:focus-visible {
-            text-decoration: underline;
+          border-bottom-color: currentColor;
         }
     }
 }

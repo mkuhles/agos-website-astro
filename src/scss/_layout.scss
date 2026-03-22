@@ -3,6 +3,10 @@ body {
   font-family: sans-serif;
   font-size: 14px;
   background-color: var(--background-primary);
+  background-image: url('/assets/seigaiha.svg');
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 
   @media screen and (min-width: 700px) and (min-height: 700px) {
       font-size: 1.5vmin;
@@ -10,22 +14,21 @@ body {
   }
 }
 
+.site-main {
+  flex: 1 0 auto;
+}
+
 section, footer {
-  background-color: var(--background-primary);
-  
-  // &.section.section--content.dojo-header {
-    background-image: url('/assets/seigaiha.svg');
-  // }
 
-  &:nth-child(odd) {
+  &:nth-child(even) {
       background-color: var(--background-secondary);
-      background-image: none;
   }
-
 }
 
 footer {
+  border-top: 1px solid var(--border-color);
   padding: calc(var(--section-padding) / 2) var(--section-padding);
+  background-color: var(--background-secondary);
 }
 
 
@@ -56,7 +59,12 @@ img {
 
 *:focus,
 *:focus-visible {
-  outline: 2px dashed var(--black);
-  outline-offset: 2px;
-  border-radius: 50%;
+  outline: none;
+  border-radius: 0;
+  box-shadow: 0 0 6px 6px rgba(var(--light-green-rgb), 0.22);
+
+  &.circle,
+  &.btn--circle {
+    border-radius: 50%;
+  }
 }
