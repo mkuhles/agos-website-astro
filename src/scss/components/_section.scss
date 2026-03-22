@@ -48,8 +48,12 @@ section {
 }
 .section__content--footer {
     
-    // align-items: center;
-    font-size: max(1.5vmin, 14px);
+    
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-direction: column;
+    // font-size: max(1.5vmin, 14px);
 
     a {
         color: var(--heighlight-color);
@@ -62,8 +66,8 @@ section {
         }
     }
 
-    @media screen and (min-width: 600px) {
-      display: flex;
+    @media screen and (min-width: 650px) {
+      flex-direction: row-reverse;
       justify-content: space-between;
     }
 }
