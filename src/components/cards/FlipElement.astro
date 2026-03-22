@@ -1,7 +1,6 @@
 ---
-import Button from "./Button.astro";
 import FlipCard from "./FlipCard.astro";
-import SocialIcons from "./SocialIcons.astro";
+import SocialIcons from "../Buttons/SocialIcons.astro";
 import type { CollectionEntry } from "astro:content";
 
 interface Props {
@@ -22,7 +21,6 @@ const className = Astro.props.className || "circle-element circle";
 
   <div class="flip-card-back-inner" slot="back">
     <div class="title">{dojo.name}</div>
-    <!-- <div class="address">{dojo.location}</div> -->
     <SocialIcons icons={{
       facebook: dojo.facebook,
       gmaps: dojo.gmaps,
