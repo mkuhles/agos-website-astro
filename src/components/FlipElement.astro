@@ -28,7 +28,9 @@ const className = Astro.props.className || "circle-element circle";
       gmaps: dojo.gmaps,
       dojoName: dojo.name
     }} />
-    <!-- <Button type="more" title="Erfahre mehr" href={"#" + dojo.id} /> -->
+    <!-- {dojoCollection === 'dojos' && dojo.isActive ? (
+      <Button type="more" title="Erfahre mehr" href={`/dojos/${dojoSlug}`} />
+    ) : null} -->
   </div>
 </FlipCard>
 

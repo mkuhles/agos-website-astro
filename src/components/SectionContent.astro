@@ -10,18 +10,17 @@ interface Props {
     key?: string;
 }
 
-const content = Astro.props.content.data;
-const { Content } = await Astro.props.content.render();
+const contentEntry = Astro.props.content;
+const content = contentEntry.data;
+const { Content } = await contentEntry.render();
 const type = Astro.props.type || "content";
 const image = content.image || content.logo || null;
 ---
 
-<Section id={content.id} type={type}>
+<Section id={contentEntry.slug} type={type}>
     <div class="section__image">
-    {image ? (
+    {image && (
         <img src={image} alt={"Dojo " + content.name} />
-    ) : (
-        <div class="placeholder">Logo fehlt</div>
     )}
     </div>
     <h2 class="section__title">{content.name}</h2>

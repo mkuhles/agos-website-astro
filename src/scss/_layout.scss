@@ -12,9 +12,14 @@ body {
 
 section, footer {
   background-color: var(--background-primary);
+  
+  // &.section.section--content.dojo-header {
+    background-image: url('/assets/seigaiha.svg');
+  // }
 
   &:nth-child(odd) {
       background-color: var(--background-secondary);
+      background-image: none;
   }
 
 }
