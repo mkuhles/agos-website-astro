@@ -58,12 +58,29 @@ Bei minderjährigen Mitgliedern wird die Einwilligung durch die Erziehungsberech
 Die Einwilligung kann jederzeit mit Wirkung für die Zukunft widerrufen werden. Im Falle eines Widerrufs werden die betreffenden Bilder unverzüglich entfernt.
 
 
-## 5. Externe Links
+## 5. WhatsApp-Kontakt
 
-Unsere Website enthält Links zu externen Webseiten (z. B. Facebook oder Google). Beim Anklicken eines Links verlassen Sie unsere Website. Für die Datenverarbeitung auf externen Seiten ist ausschließlich der jeweilige Anbieter verantwortlich.
+Auf unserer Website bieten wir die Möglichkeit, uns direkt über WhatsApp zu kontaktieren. Beim Anklicken des WhatsApp-Links werden Sie zu der WhatsApp-Anwendung oder -Webseite weitergeleitet.
+
+**Datenübertragung an WhatsApp:**
+- Beim Öffnen des WhatsApp-Links werden technische Informationen (z. B. IP-Adresse, Browsertyp) an WhatsApp übertragen
+- WhatsApp ist ein Dienst der Meta Platforms Inc. (ehemals Facebook Inc.)
+- Die Datenverarbeitung durch WhatsApp unterliegt der Datenschutzerklärung von WhatsApp/Meta
+
+**Wichtige Hinweise:**
+- Wir haben keinen Einfluss auf die Datenverarbeitung durch WhatsApp
+- Eine DSGVO-konforme Nutzung von WhatsApp kann nicht garantiert werden
+- WhatsApp überträgt Daten möglicherweise in die USA (kein angemessenes Datenschutzniveau nach EU-Standards)
+
+Weitere Informationen finden Sie in der Datenschutzerklärung von WhatsApp:
+[https://www.whatsapp.com/legal/privacy-policy](https://www.whatsapp.com/legal/privacy-policy)
+
+## 6. Externe Links
+
+Unsere Website enthält weitere Links zu externen Webseiten (z. B. Facebook oder Google). Beim Anklicken eines Links verlassen Sie unsere Website. Für die Datenverarbeitung auf externen Seiten ist ausschließlich der jeweilige Anbieter verantwortlich.
 
 
-## 6. Rechte der betroffenen Personen
+## 7. Rechte der betroffenen Personen
 
 Sie haben das Recht auf:
 
@@ -82,6 +99,6 @@ Landesbeauftragte für den Datenschutz und für das Recht auf Akteneinsicht<br> 
 Stahnsdorfer Damm 77<br>
 14532 Kleinmachnow
 
-## 7. Änderung dieser Datenschutzerklärung
+## 8. Änderung dieser Datenschutzerklärung
 
 Wir behalten uns vor, diese Datenschutzerklärung anzupassen, sofern dies erforderlich wird.
