@@ -65,6 +65,7 @@
 .flip-card-back {
   transform: rotateY(180deg);
   font-size: 2vmin;
+  background-color: var(--background-secondary);
 
   a.btn {
     margin: auto;
