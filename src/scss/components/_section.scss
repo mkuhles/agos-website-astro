@@ -47,10 +47,9 @@ section {
   } 
 }
 .section__content--footer {
-    display: flex;
-    justify-content: space-between;
+    
     // align-items: center;
-    font-size: max(1.5vmin, 12px);
+    font-size: max(1.5vmin, 14px);
 
     a {
         color: var(--heighlight-color);
@@ -61,5 +60,10 @@ section {
         &:focus-visible {
             text-decoration: underline;
         }
+    }
+
+    @media screen and (min-width: 600px) {
+      display: flex;
+      justify-content: space-between;
     }
 }
