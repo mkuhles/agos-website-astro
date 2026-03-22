@@ -1,0 +1,17 @@
+---
+
+import { getCollection } from "astro:content";
+import Section from "./Section.astro";
+
+const dojos = await getCollection("dojos");
+const activeDojos = dojos.filter((dojo) => dojo.data.isActive);
+---
+
+<Section type="dojos">
+  <h2>Unsere Dojos</h2>
+  <ul>
+    {activeDojos.map((dojo) => (
+      <li><a href={`/dojos/${dojo.slug}`}>{dojo.data.location}</a></li>
+    ))}
+  </ul>
+</Section>

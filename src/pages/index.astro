@@ -5,6 +5,7 @@ import SectionContent from "../components/sections/SectionContent.astro";
 import SectionFAQ from "../components/sections/SectionFAQ.astro";
 import SectionFirst from "../components/sections/SectionFirst.astro";
 import SectionContact from "../components/sections/SectionContact.astro";
+import SectionDojos from '../components/sections/SectionDojos.astro';
 
 const dojos = await getCollection('dojos');
 const agos = await getCollection('agos').then( (entries) => entries.find( (entry) => entry.slug === 'agos' ) ) ;
@@ -18,6 +19,7 @@ if(!agos) {
   <SectionContent id="agos" class="about-section" content={agos} />
   <SectionFAQ />
   <SectionContact />
+  <SectionDojos />
 </BaseLayout>
 
 <script>

@@ -7,6 +7,7 @@
   --center-element-diameter: 25vmin;
   --center-element-max-diameter: 400px;
   --social-media-icon-size: 3vmin;
+  --border-radius: 0.5rem;
 
   --dark-green: #1a3524;
   --light-green: #243f2c;
@@ -14,24 +15,13 @@
 
   --beige-first: #fbf7ef;
   --beige-second: #f3ecd9;
-
+  --red: #c41e3a;
   --black: #1f2123;
 
   --background-primary: var(--beige-first);
   --background-secondary: var(--beige-second);
   --border-color: var(--dark-green);
-  --heighlight-color: var(--light-green);
-
-
-  
-  /* Alternative Farbpalette (optional, je nach Geschmack) */
-  --bg: #f3ecd9;          /* warmes Elfenbein/Sand */
-  --paper: #fbf7ef;       /* helles "Papier" */
-  --ink: #1f2a24;         /* fast-schwarz, warm */
-  --muted: #55645c;
-  --green: #1f4b3a;       /* Dojo-Akzent */
-  --red: #a63a2b;         /* sparsam (Buttons/Details) */
-  --line: rgba(31, 42, 36, 0.14);
-  --shadow: 0 10px 30px rgba(0,0,0,0.10);
+  --primary-color: var(--light-green);
+  --highlight-color: var(--red);
 
 }
