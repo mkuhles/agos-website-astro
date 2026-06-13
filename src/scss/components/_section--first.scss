@@ -12,9 +12,9 @@
     color: var(--black);
   
     text-align: center;
-    font-size: 3.5vmin;
+    font-size: max(3.5vmin, 2em);
     margin-top: 0;
-    margin-bottom: 5vmin;
+    margin-bottom: max(5vmin, 2em);
     padding: 0;
   }
 }

@@ -1,15 +1,9 @@
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-card {
   background-color: transparent;
-  width: var(--circle-element-diameter);
-  height: var(--circle-element-diameter);
-  border-radius: 50%;
-    
-  /* border: 1px solid #f1f1f1; */
-  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  perspective: 1000px;
 }
 
-/* This container is needed to position the front and back side */
 .flip-card-inner {
   position: relative;
   width: 100%;
@@ -20,14 +14,16 @@
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
+.flip-card:hover,
+.flip-card:focus-within,
+.flip-card:focus-visible {
+  z-index: 100;
 
-/* Keyboard-Fokus soll flippen wie Hover: */
-.flip-card:focus-within .flip-card-inner,
-.flip-card:focus-visible .flip-card-inner{
-  transform: rotateY(180deg);
+  @media (min-width: 768px) and (min-height: 768px) { 
+    .flip-card-inner{
+      transform: rotateY(180deg);
+    }
+  }
 }
 
 /* Reduced motion: nicht drehen, siehe dein R-Media-Query */
@@ -43,35 +39,67 @@
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
   
-  border-radius: 50%;
-  background-color: var(--background-primary);
-  background-position: center;
-  // background-image: url('../src/assets/stones.png');
-  background-size: 20vmin;
-  box-shadow: 0px 0px 10px var(--dark-green);
-  color: var(--light-green);
-  
   display: flex;
   justify-content: center;
   align-items: center;
-
-  &-inner {
-    max-width: 100%;
-    max-height: 100%;
-  }
 }
 
 /* Style the back side */
 .flip-card-back {
-  transform: rotateY(180deg);
-  font-size: 2vmin;
-  background-color: var(--background-secondary);
+  border-radius: 100%;
 
-  a.btn {
-    margin: auto;
+  padding: min(6vmin,var(--circle-element-padding));
+  width: var(--back-width, var(--circle-element-diameter));
+  height: var(--back-height, var(--circle-element-diameter));
+  font-size: var(--circle-element-font-size);
+  background-color: var(--background-secondary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.3s ease, width 0.35s ease, height 0.35s ease;
+
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+    
+
+  @media (min-width: 768px) and (min-height: 768px) {
+    transform: translate(-50%, -50%) rotateY(180deg);
+    transition: opacity 1s ease;
+    /* on desktop keep same size as front */
+    width: var(--circle-element-diameter);
+    height: var(--circle-element-diameter);
+    padding:  calc(var(--circle-element-padding) * 2);
+  }
+}
+.flip-card:hover,
+.flip-card:focus-visible,
+.flip-card:focus,
+.flip-card[aria-pressed="true"] {
+  .flip-card-back {
+    opacity: 1;
   }
 }
 
-.flip-card-back-inner {
-  padding: 3.5vmin 3vmin 2.5vmin 3vmin;
+@media (max-width: 767px) or (max-height: 767px) {
+  .flip-card-back {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .flip-card.is-open {
+    z-index: 9999;
+  }
+
+  .flip-card.is-open .flip-card-back {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+
+    position: absolute;
+    transform: translate(var(--dx), var(--dy));
+  }
 }

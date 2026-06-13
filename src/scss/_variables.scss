@@ -6,7 +6,7 @@
   --circle-element-max-diameter: 400px;
   --center-element-diameter: 25vmin;
   --center-element-max-diameter: 400px;
-  --social-media-icon-size: 3vmin;
+  --social-media-icon-size: 30px;
   --border-radius: 0.5rem;
 
   --dark-green: #1a3524;
@@ -24,4 +24,9 @@
   --primary-color: var(--light-green);
   --highlight-color: var(--red);
 
+
+  --circle-element-back-diameter: min(50vmin,20em);
+  --circle-element-padding: 2vmin;
+  --circle-element-font-size: min(5vmin, 1.2em);
+  --font-size: min(4vmin, 1.5em);
 }

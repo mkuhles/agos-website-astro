@@ -18,8 +18,48 @@ const {agos, dojos} = Astro.props;
     <div class="flex-center">
         <div id="circle-container" class="circle-container">
             <FlipElement dojo={agos} className="center-element" />
-            {dojos.map( (dojo: CollectionEntry<"dojos">) => <FlipElement dojo={dojo} /> )}
+            {dojos.map( (dojo: CollectionEntry<"dojos">) => <FlipElement className="circle-element" dojo={dojo} /> )}
         </div>
     </div>
     <DownButton />
 </Section>
+
+<style>
+#circle-container {
+  position: relative;
+  width: var(--circle-diameter);
+  height: var(--circle-diameter);
+  /* overflow: hidden; */
+  @media (--medium-up) {
+    overflow: visible;
+  }
+
+  .circle-element {
+    position: absolute;
+    width: var(--circle-element-diameter);
+    height: var(--circle-element-diameter);
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: var(--circle-element-font-size);
+    box-sizing: border-box;
+    
+    opacity: 0;
+  }
+
+  .circle-element-front {
+    padding: var(--circle-element-padding);
+  }
+
+  .center-element {
+    z-index: 100;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+</style>
