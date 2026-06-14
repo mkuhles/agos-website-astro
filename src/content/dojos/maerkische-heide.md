@@ -1,5 +1,6 @@
 ---
 isActive: true
+order: 1
 name: "Getsu-yobi Dojo Märkische Heide"
 location: "Märkische Heide"
 facebook: "https://www.facebook.com/p/Aikido-Dojo-M%C3%A4rkische-Heide-100094291105575/"

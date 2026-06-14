@@ -4,6 +4,7 @@ const dojos = defineCollection({
   type: 'content', // Markdown/MDX
   schema: z.object({
     isActive: z.boolean().optional(),
+    order: z.number(),
     name: z.string(),
     location: z.string(),
     facebook: z.string().optional(),
@@ -21,6 +22,7 @@ const dojos = defineCollection({
         ).default([]),
       })
     ).default([]),
+    trainingsNotes: z.string().optional(),
   }),
 });
 

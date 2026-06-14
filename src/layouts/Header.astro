@@ -1,8 +1,7 @@
 ---
-import { getCollection } from "astro:content";
+import getDojos from "../lib/getDojos";
 
-const dojos = await getCollection("dojos");
-const activeDojos = dojos.filter((dojo) => dojo.data.isActive);
+const dojos = await getDojos();
 ---
 
 <header class="site-header">
@@ -11,12 +10,150 @@ const activeDojos = dojos.filter((dojo) => dojo.data.isActive);
       <img src="/assets/agos.png" alt="Logo Aikido Gemeinschaft Oder-Spree" />
     </a>
     <nav class="site-header__nav" aria-label="Dojos">
+      <div id="site-nav" class="site-header__nav-inner">
       <span class="site-header__label">Dojos</span>
       <div class="site-header__links">
-        {activeDojos.map((dojo) => (
+        {dojos.map((dojo) => (
           <a href={`/dojos/${dojo.slug}`}>{dojo.data.location}</a>
         ))}
       </div>
+      </div>
     </nav>
+    
+    <button class="site-header__burger" aria-expanded="false" aria-controls="site-nav" aria-label="Navigation öffnen">
+      <span class="burger__bar"></span>
+      <span class="burger__bar"></span>
+      <span class="burger__bar"></span>
+    </button>
   </div>
 </header>
+
+<script>
+  const burger = document.querySelector('.site-header__burger');
+  const header = document.querySelector('.site-header');
+  const navInner = document.getElementById('site-nav');
+
+  function toggleNav(open) {
+    const isOpen = typeof open === 'boolean' ? open : !header.classList.contains('nav-open');
+    header.classList.toggle('nav-open', isOpen);
+    burger?.setAttribute('aria-expanded', String(isOpen));
+  }
+
+  burger?.addEventListener('click', () => toggleNav());
+
+  // close on Escape or click outside
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') toggleNav(false);
+  });
+  document.addEventListener('click', (e) => {
+    if (!header.contains(e.target)) toggleNav(false);
+  });
+</script>
+
+<style is:global>
+/* Burger menu styles (simple, mobile-first) */
+.site-header__burger {
+  display: none;
+  background: transparent;
+  border: none;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+}
+.burger__bar{
+  display: block;
+  width: 1.6rem;
+  height: 2px;
+  background: var(--black);
+  margin: 4px 0;
+}
+
+@media (max-width: 767px) {
+  .site-header__nav-inner { display: none; }
+  .site-header__burger {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .site-header.nav-open .site-header__nav-inner {
+    display: block;
+    position: absolute;
+    top: calc(100%);
+    right: 0;
+    background: var(--background-secondary);
+    border-top: 1px solid var(--border-color);
+    border-left: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.5rem;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    min-width: 160px;
+  }
+  .site-header__nav-inner .site-header__links {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 300;
+  background: var(--background-secondary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.site-header__content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0.75rem max(1rem, calc(var(--section-padding) / 2));
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-header__logo-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  background-color: transparent;
+
+  img {
+    height: 4rem;
+    width: auto;
+    display: block;
+  }
+}
+
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.site-header__label {
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.site-header__links {
+  display: flex;
+  flex-wrap: wrap;
+
+  a {
+    color: var(--black);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding: 10px;
+  }
+
+  a:hover,
+  a:focus,
+  a:focus-visible {
+    border-bottom-color: currentColor;
+  }
+}
+</style>

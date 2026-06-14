@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { getDojos } from '../lib/getDojos';
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionContent from "../components/sections/SectionContent.astro";
 import SectionFAQ from "../components/sections/SectionFAQ.astro";
@@ -7,7 +8,7 @@ import SectionFirst from "../components/sections/SectionFirst.astro";
 import SectionContact from "../components/sections/SectionContact.astro";
 import SectionDojos from '../components/sections/SectionDojos.astro';
 
-const dojos = await getCollection('dojos');
+const dojos = await getDojos();
 const agos = await getCollection('agos').then( (entries) => entries.find( (entry) => entry.slug === 'agos' ) ) ;
 if(!agos) {
   throw new Error("AGOS entry not found in content collection 'agos'");
