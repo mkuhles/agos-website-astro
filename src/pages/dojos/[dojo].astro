@@ -70,9 +70,9 @@ const { Content } = await dojo.render();
 </BaseLayout>
 
 
-<style>
+<style is:global>
 #dojo-trainings {
-  background-color: #ecdbc1;
+  background-color: #f2e1c7;
 }
 .dojo-logo {
   text-align: center;
@@ -84,15 +84,13 @@ const { Content } = await dojo.render();
   background-repeat: no-repeat;
 
   max-width: 40rem;
-  background-color: var(--background-secondary);
-  padding: 30px;
   margin: auto;
 }
 .dojo-impressions {
   text-align: center;
 }
 .dojo-impressions img {
-  max-width: 40rem;
+  max-width: min(40rem, 100%);
   margin: auto;
 }
 
