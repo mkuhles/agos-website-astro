@@ -53,16 +53,13 @@ function computeBackCenteringOffset(container: HTMLElement, card: HTMLElement, b
   const cardCenterX = cardRect.left - c.left + cardRect.width / 2;
   const cardCenterY = cardRect.top - c.top + cardRect.height / 2;
 
-  // desired back top-left so that back is centered in container
-  const desiredBackTopLeftX = targetX - backRect.width / 2;
-  const desiredBackTopLeftY = targetY - backRect.height / 2;
-
-  // current back top-left (when top:50% left:50% and no transform) is at the card center
-  const currentBackTopLeftX = cardCenterX;
-  const currentBackTopLeftY = cardCenterY;
-
-  const dx = desiredBackTopLeftX - currentBackTopLeftX;
-  const dy = desiredBackTopLeftY - currentBackTopLeftY;
+  // With CSS baseline transform translate(-50%,-50%), the element's top-left is
+  // at (cardCenterX - backWidth/2, cardCenterY - backHeight/2).
+  // We will apply an extra pixel offset via translate(calc(-50% + var(--dx)), ...).
+  // Therefore the required pixel offset is simply the difference between
+  // container center and card center.
+  const dx = targetX - cardCenterX;
+  const dy = targetY - cardCenterY;
 
   return { dx, dy };
 }

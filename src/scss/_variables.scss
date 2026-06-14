@@ -26,7 +26,7 @@
 
 
   --circle-element-back-diameter: min(50vmin,20em);
-  --circle-element-padding: 2vmin;
+  --circle-element-padding: min(6vmin, 30px);
   --circle-element-font-size: min(5vmin, 1.2em);
   --font-size: min(4vmin, 1.5em);
 }
