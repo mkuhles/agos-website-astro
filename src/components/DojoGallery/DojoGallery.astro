@@ -1,5 +1,6 @@
 ---
 const { images = [], dojoName } = Astro.props;
+import EnsoButton from '../Buttons/EnsoButton.astro';
 import LeftButton from '../Buttons/LeftButton.astro';
 import RightButton from '../Buttons/RightButton.astro';
 import Section from '../sections/Section.astro';
@@ -11,7 +12,12 @@ import Section from '../sections/Section.astro';
       <div class="dojo-gallery">
         <h2 class="section__title">Bilder</h2>
         <div class="gallery-slider" data-slider>
-          <LeftButton class="slider-btn prev" aria-label="Vorheriges Bild" />
+          <EnsoButton
+            className="left slider-btn prev"
+            direction="left"
+            title="Vorheriges Bild"
+            eventName="gallery-prev" 
+            aria-label="Vorheriges Bild" />
           <div class="slider-track">
             {images.map((src: string, i: number) => (
               <button class="slider-item" data-index={i} aria-label={`Bild ${i + 1}`}>
@@ -19,7 +25,12 @@ import Section from '../sections/Section.astro';
               </button>
             ))}
           </div>
-          <RightButton class="slider-btn next" aria-label="Nächstes Bild" />
+          <EnsoButton
+            className="right slider-btn next"
+            direction="right"
+            title="Nächstes Bild"
+            eventName="gallery-next"
+            aria-label="Nächstes Bild" />
         </div>
       </div>
 
@@ -34,7 +45,7 @@ import Section from '../sections/Section.astro';
 ) : null}
 
 
-<style>
+<style is:global>
 .gallery-slider {
   position: relative;
   display: flex;
@@ -55,15 +66,28 @@ import Section from '../sections/Section.astro';
 }
 .slider-item img {
   display: block;
-  height: clamp(8rem, 18vw, 16rem);
+  height: 16rem;
   width: auto;
 }
 .slider-btn {
-  background: rgba(0,0,0,0.06);
+  background-color: rgba(255,255,255,0.3) !important;
   border: none;
   padding: 0.5rem 0.8rem;
   cursor: pointer;
   font-size: 1.6rem;
+  top: 50%;
+  z-index: 1;
+
+  &.left {
+    position: absolute;
+    left: 0;
+    transform: translate(-50%,-50%);
+  }
+  &.right {
+    position: absolute;
+    right: 0;
+    transform: translate(50%,-50%);
+ }
 }
 .lightbox {
   position: fixed;
