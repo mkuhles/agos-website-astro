@@ -4,7 +4,7 @@ import { getDojos } from '../lib/getDojos';
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionContent from "../components/sections/SectionContent.astro";
 import SectionFAQ from "../components/sections/SectionFAQ.astro";
-import SectionFirst from "../components/sections/SectionFirst.astro";
+import SectionFirst from "../components/sections/SectionFirst/SectionFirst.astro";
 import SectionContact from "../components/sections/SectionContact.astro";
 import SectionDojos from '../components/sections/SectionDojos.astro';
 
@@ -23,14 +23,4 @@ if(!agos) {
   <!-- <SectionDojos /> -->
 </BaseLayout>
 
-<script>
-  import useCircleAnimation from "../scripts/useCircleAnimation";
-  
-  const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-  document.documentElement.classList.toggle('reduced-motion', mq.matches);
-  mq.addEventListener?.('change', e =>
-    document.documentElement.classList.toggle('reduced-motion', e.matches)
-  );
 
-  {useCircleAnimation(mq.matches)}
-</script>

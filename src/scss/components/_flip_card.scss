@@ -71,7 +71,6 @@
     /* on desktop keep same size as front */
     width: var(--circle-element-diameter);
     height: var(--circle-element-diameter);
-    padding:  calc(var(--circle-element-padding) * 2);
   }
 }
 .flip-card:hover,

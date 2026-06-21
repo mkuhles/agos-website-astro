@@ -1,16 +1,42 @@
 ---
 interface Props {
-  title: string;
   type: "up" | "more";
   href: string;
+  title?: string;
   className?: string;
+  text?: string;
 }
 
-const { title, type, href, className } = Astro.props;
+const { title, type, href, className, text } = Astro.props;
 ---
-<style lang="scss" scoped>
-
-</style>
-
 <a class={"btn btn--" + type + " " + className} href={href} title={title} aria-label={title}>
+  {text}
 </a>
+
+<style lang="scss" scoped>
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--color-text);
+  background-color: var(--color-primary);
+  border-radius: 4px;
+  padding: 10px 15px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: var(--color-primary-dark);
+  }
+
+  &--more {
+    padding: 12px;
+    border-radius: 5px;
+    color: var(--color-primary);
+
+    &:hover {
+      background-color: var(--color-primary-dark);
+    }
+ }
+}
+</style>

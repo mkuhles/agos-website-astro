@@ -2,13 +2,15 @@
 import FlipCard from "./FlipCard.astro";
 import SocialIcons from "../Buttons/SocialIcons.astro";
 import type { CollectionEntry } from "astro:content";
+import Button from "../Buttons/Button.astro";
 
 interface Props {
   dojo: CollectionEntry<'dojos'> | CollectionEntry<'agos'>;
   className?: string;
 }
 
-const dojo = Astro.props.dojo.data;
+const dojoEntry = Astro.props.dojo;
+const dojo = dojoEntry.data;
 const className = Astro.props.className || "circle-element circle";
 ---
 <FlipCard className={className}>
@@ -26,9 +28,9 @@ const className = Astro.props.className || "circle-element circle";
       gmaps: dojo.gmaps,
       dojoName: dojo.name
     }} />
-    <!-- {dojoCollection === 'dojos' && dojo.isActive ? (
-      <Button type="more" title="Erfahre mehr" href={`/dojos/${dojoSlug}`} />
-    ) : null} -->
+    {dojo.isActive && (
+      <Button type="more" text="Erfahre mehr" href={`/dojos/${dojoEntry.slug}`} />
+    )}
   </div>
 </FlipCard>
 
