@@ -4,7 +4,7 @@ order: 2
 name: "Ka-yobi Dojo Groß Rietz"
 location: "Groß Rietz"
 facebook: "https://www.facebook.com/aikidogemeinschaft"
-# gmaps: "https://maps.app.goo.gl/4EbGQ1zejDBzGY859"
+gmaps: "https://maps.app.goo.gl/3ueYz7RBqruYA11S6"
 logo: "/assets/logo-beeskow.png"
 trainings:
   - day: "Dienstag"

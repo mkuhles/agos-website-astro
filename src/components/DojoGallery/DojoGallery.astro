@@ -70,23 +70,23 @@ import Section from '../sections/Section.astro';
 .slider-btn {
   background-color: rgba(255,255,255,0.3) !important;
   border: none;
-  padding: 0.5rem 0.8rem;
   cursor: pointer;
   font-size: 1.6rem;
   top: 50%;
   z-index: 1;
-
-  &.left {
+}
+.enso.slider-btn.left {
     position: absolute;
     left: 0;
-    transform: translate(-50%,-50%);
-  }
-  &.right {
+    transform: translate(-50%, -50%);
+}
+.enso.slider-btn.right {
     position: absolute;
     right: 0;
-    transform: translate(50%,-50%);
- }
+    transform: translate(50%, -50%);
 }
+
+
 .lightbox {
   position: fixed;
   inset: 0;
