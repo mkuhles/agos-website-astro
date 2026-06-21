@@ -1,10 +1,11 @@
 ---
 interface Props {
-  type: "up" | "more";
-  href: string;
+  type: "up" | "more" | "left" | "right";
+  href?: string;
   title?: string;
   className?: string;
   text?: string;
+  eventName?: string;
 }
 
 const { title, type, href, className, text } = Astro.props;
@@ -38,5 +39,25 @@ const { title, type, href, className, text } = Astro.props;
       background-color: var(--color-primary-dark);
     }
  }
+
+  &--left {
+    padding: 12px;
+    border-radius: 5px;
+    color: var(--color-primary);
+
+    &:hover {
+      background-color: var(--color-primary-dark);
+    }
+  }
+
+  &--right {
+    padding: 12px;
+    border-radius: 5px;
+    color: var(--color-primary);
+
+    &:hover {
+      background-color: var(--color-primary-dark);
+    }
+  }
 }
 </style>

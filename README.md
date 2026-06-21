@@ -1,43 +1,82 @@
-# Astro Starter Kit: Minimal
+# AGOS Website (Astro)
 
-```sh
-npm create astro@latest -- --template minimal
+This repo contains the website for Aikido Gemeinschaft Oder-Spree built with Astro.
+
+## Quickstart
+
+Install and run locally:
+
+```bash
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Build for production:
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+npm run build
+npm run preview
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Project structure (high level)
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Important folders:
 
-Any static assets, like images, can be placed in the `public/` directory.
+```
+public/                 # static assets (images, icons, manifest)
+src/
+	components/           # reusable components
+		DojoGallery/        # DojoGallery component (Astro + JS + styles)
+	pages/                 # routes (e.g. src/pages/dojos/[dojo].astro)
+	layouts/               # layout components (Header, Footer, BaseLayout)
+	scss/                  # global styles and variables
+	scripts/               # shared client scripts
+content/                 # markdown/frontmatter content for dojos, trainer, etc.
+```
 
-## 🧞 Commands
+## DojoGallery component
 
-All commands are run from the root of the project, from a terminal:
+- Location: `src/components/DojoGallery/`
+- Files:
+	- `DojoGallery.astro` — Astro component, accepts props `images` (array of URLs) and `dojoName`.
+	- `dojo-gallery.js` — per-instance client script that initializes slider + lightbox for each `[data-dojo-gallery]` container.
+	- `DojoGallery.scss` (optional) or `styles.js` — component styles (this project currently uses the JS styles module).
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Usage (example in `src/pages/dojos/[dojo].astro`):
 
-## 👀 Want to learn more?
+```astro
+import DojoGallery from '../../components/DojoGallery/DojoGallery.astro';
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+<DojoGallery images={dojoImages} dojoName={dojo.data.name} />
+```
+
+Notes:
+- Images for a dojo are read from `public/assets/dojos/<slug>/` and passed to the component server-side.
+- The client script is loaded once in `src/layouts/BaseLayout.astro` as an ESM module.
+
+## Development notes
+
+- Styling: the project uses SCSS for global styles (`src/scss/`). Component styles may be inlined or placed alongside components.
+- Scripts: client modules live under `src/components/...` for component-scoped behaviour and are imported from `BaseLayout`.
+- Content: Dojo pages are generated from `src/content/dojos/*.md` files (frontmatter provides metadata).
+
+## Commands
+
+| Command | Action |
+|---|---|
+| `npm install` | Install dependencies |
+| `npm run dev` | Start local dev server |
+| `npm run build` | Build production site |
+| `npm run preview` | Preview the build locally |
+
+## If something breaks
+
+- Run `npm run build` to see build-time errors.
+- Check the console in the browser for client-side errors (scripts/styles).
+- Ask me to run checks or tidy up component locations/styles.
+
+---
+If you want, I can also:
+- convert the component styles to `DojoGallery.scss` and import them, or
+- add a short `src/components/README.md` listing available components.
+

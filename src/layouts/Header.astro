@@ -33,7 +33,8 @@ const dojos = await getDojos();
   const header = document.querySelector('.site-header');
   const navInner = document.getElementById('site-nav');
 
-  function toggleNav(open) {
+  function toggleNav(open: boolean | undefined = undefined) {
+    if (!header) return;
     const isOpen = typeof open === 'boolean' ? open : !header.classList.contains('nav-open');
     header.classList.toggle('nav-open', isOpen);
     burger?.setAttribute('aria-expanded', String(isOpen));
@@ -46,7 +47,10 @@ const dojos = await getDojos();
     if (e.key === 'Escape') toggleNav(false);
   });
   document.addEventListener('click', (e) => {
-    if (!header.contains(e.target)) toggleNav(false);
+    if (!header) return;
+    const tgt = e.target;
+    if (!(tgt instanceof Node)) return;
+    if (!header.contains(tgt)) toggleNav(false);
   });
 </script>
 

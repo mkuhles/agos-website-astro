@@ -47,7 +47,7 @@ const { direction = 'up', href, eventName, title = '', className = '' } = Astro.
       height: 100%;
       background-repeat: no-repeat;
       background-size: contain;
-      background-image: url('assets/chevron.png');
+      background-image: url('/assets/chevron.png');
       background-color: transparent;
     }
   }
@@ -77,7 +77,7 @@ const { direction = 'up', href, eventName, title = '', className = '' } = Astro.
 <script>
   // dispatch CustomEvent if data-event is set
   (function () {
-    function init(el) {
+    function init(el: HTMLElement | null) {
       if (!el) return;
       const ev = el.getAttribute('data-event');
       if (!ev) return;
