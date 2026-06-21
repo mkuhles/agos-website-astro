@@ -16,7 +16,6 @@ import Section from '../sections/Section.astro';
             className="left slider-btn prev"
             direction="left"
             title="Vorheriges Bild"
-            eventName="gallery-prev" 
             aria-label="Vorheriges Bild" />
           <div class="slider-track">
             {images.map((src: string, i: number) => (
@@ -29,7 +28,6 @@ import Section from '../sections/Section.astro';
             className="right slider-btn next"
             direction="right"
             title="Nächstes Bild"
-            eventName="gallery-next"
             aria-label="Nächstes Bild" />
         </div>
       </div>

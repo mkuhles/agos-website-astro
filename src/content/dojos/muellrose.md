@@ -6,7 +6,6 @@ location: "Müllrose"
 facebook: "https://www.facebook.com/people/Aikido-Dojo-M%C3%BCllrose/100078400001742/#"
 gmaps: "https://maps.app.goo.gl/5mqpYQAG1LFtVTEA9"
 logo: "/assets/logo-muellrose.png"
-image: "/assets/dojo-muellrose.jpg"
 trainings:
   - day: "Freitag"
     slots:

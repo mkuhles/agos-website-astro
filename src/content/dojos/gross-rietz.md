@@ -6,7 +6,6 @@ location: "Groß Rietz"
 facebook: "https://www.facebook.com/aikidogemeinschaft"
 # gmaps: "https://maps.app.goo.gl/4EbGQ1zejDBzGY859"
 logo: "/assets/logo-beeskow.png"
-# image: "/assets/dojo-beeskow.jpg"
 trainings:
   - day: "Dienstag"
     slots:
