@@ -1,20 +1,26 @@
 ---
 // Scroll-based button with automatic visibility toggling
+import EnsoButton from './EnsoButton.astro';
+
 interface Props {
   className?: string;
   showOnScroll?: boolean; // true = show after scrolling, false = show before scrolling
-  type?: string;
   title?: string;
   href?: string;
-  onClick?: string;
+  direction?: 'up' | 'down' | 'left' | 'right';
 }
 
-const { className = '', showOnScroll = false, type, title, href, onClick } = Astro.props;
+const { className = '', showOnScroll = false, title, href, direction = 'up' } = Astro.props;
 ---
 
 <div class={`scroll-toggle ${className} ${showOnScroll ? 'show-on-scroll' : 'show-on-top'}`}>
-  {href && <a class={`btn btn--${type} btn--circle`} href={href} title={title}></a>}
-  {onClick && <button class={`btn btn--${type} btn--circle`} onclick={onClick} title={title}></button>}
+  <!-- Render a single EnsoButton; it gracefully ignores undefined props -->
+  <EnsoButton
+    direction={direction}
+    className={`btn ${className}`}
+    href={href}
+    title={title}
+  />
 </div>
 
 <style lang="scss" scoped>
@@ -42,42 +48,6 @@ const { className = '', showOnScroll = false, type, title, href, onClick } = Ast
     &.hidden {
       opacity: 0;
       pointer-events: none;
-    }
-
-    .btn {
-      background-image: url('assets/enso.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-color: transparent;
-      padding: 0;
-      width: var(--btn-size);
-      height: var(--btn-size);
-      display: block;
-      position: relative;
-
-      @keyframes up-movement {
-          from {top:clamp(4px, 0.5vmin, 10px);}
-          to {top:clamp(-4px, -0.5vmin, -10px);}
-      }
-      &::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-image: url('assets/chevron.png');
-        background-color: transparent;
-      }
-      
-      &:focus-visible,
-      &:hover {
-        &::after {
-          animation: up-movement 0.5s ease-in-out infinite alternate;
-        }
-      }
     }
 
     &.up {
@@ -126,4 +96,30 @@ const { className = '', showOnScroll = false, type, title, href, onClick } = Ast
 
   // Initial check
   updateButtonVisibility();
+
+  // Smooth scroll for anchor-based EnsoButtons inside .scroll-toggle
+  function initSmoothScroll() {
+    document.querySelectorAll('.scroll-toggle a.enso[href^="#"]').forEach(a => {
+      if ((a).__smoothInit) return;
+      (a).__smoothInit = true;
+      a.addEventListener('click', function (e) {
+        const href = a.getAttribute('href');
+        if (!href || !href.startsWith('#')) return;
+        const target = href === '#' || href === '#top' ? document.documentElement : document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          // Use scrollIntoView for smooth behavior; prefer start so header doesn't overlap
+          try {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } catch (err) {
+            // fallback
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        }
+      });
+    });
+  }
+
+  initSmoothScroll();
+  document.addEventListener('DOMContentLoaded', initSmoothScroll);
 </script>

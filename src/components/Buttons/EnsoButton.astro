@@ -1,0 +1,99 @@
+---
+interface Props {
+  direction?: 'up' | 'down' | 'left' | 'right';
+  href?: string;
+  eventName?: string;
+  title?: string;
+  className?: string;
+}
+
+const { direction = 'up', href, eventName, title = '', className = '' } = Astro.props;
+---
+
+{href ? (
+  <a class={`enso enso--${direction} ${className}`} href={href} title={title} data-event={eventName}></a>
+) : (
+  <button class={`enso enso--${direction} ${className}`} type="button" data-event={eventName} title={title}></button>
+)}
+
+<style lang="scss" scoped>
+  .enso {
+    background-image: url('/assets/enso.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    padding: 0;
+    width: var(--btn-size, 48px);
+    height: var(--btn-size, 48px);
+    display: inline-block;
+    position: relative;
+    border: none;
+    border-radius: 50%;
+
+    @keyframes up-movement {
+      from {top:clamp(4px, 0.5vmin, 10px);}
+      to {top:clamp(-4px, -0.5vmin, -10px);}
+    }
+    @keyframes left-movement {
+      from {left:clamp(4px, 0.5vmin, 10px);}
+      to {left:clamp(-4px, -0.5vmin, -10px);}
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-image: url('assets/chevron.png');
+      background-color: transparent;
+    }
+  }
+  .enso--up, .enso--down {
+    &:focus-visible,
+    &:hover {
+      &::after {
+        animation: up-movement 0.5s ease-in-out infinite alternate;
+      }
+    }
+  }
+  .enso--left, .enso--right {
+    &:focus-visible,
+    &:hover {
+      &::after {
+        animation: left-movement 0.5s ease-in-out infinite alternate;
+      }
+    }
+  }
+
+  .enso--up::after { transform: rotate(0deg); }
+  .enso--down::after { transform: rotate(180deg); }
+  .enso--left::after { transform: rotate(-90deg); }
+  .enso--right::after { transform: rotate(90deg); }
+</style>
+
+<script>
+  // dispatch CustomEvent if data-event is set
+  (function () {
+    function init(el) {
+      if (!el) return;
+      const ev = el.getAttribute('data-event');
+      if (!ev) return;
+      if ((el).__ensoInit) return;
+      (el).__ensoInit = true;
+      el.addEventListener('click', function () {
+        window.dispatchEvent(new CustomEvent(ev));
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.enso').forEach(init);
+      });
+    } else {
+      document.querySelectorAll('.enso').forEach(init);
+    }
+  })();
+</script>
